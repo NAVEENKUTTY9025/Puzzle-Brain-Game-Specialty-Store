@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="oakTable" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d8b589"/>
+      <stop offset="50%" stop-color="#c39864"/>
+      <stop offset="100%" stop-color="#a87c49"/>
+    </linearGradient>
+    <linearGradient id="hexWalnut" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c4f2b"/>
+      <stop offset="100%" stop-color="#513117"/>
+    </linearGradient>
+    <linearGradient id="hexOak" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2dab4"/>
+      <stop offset="100%" stop-color="#d4ad76"/>
+    </linearGradient>
+    <linearGradient id="hexPurple" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#9b7ad9"/>
+      <stop offset="100%" stop-color="#5e3b9e"/>
+    </linearGradient>
+    <linearGradient id="hexSlate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#5b667a"/>
+      <stop offset="100%" stop-color="#333c4d"/>
+    </linearGradient>
+    <filter id="tileShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#2c1908" flood-opacity="0.32"/>
+    </filter>
+    <filter id="pawnShadow" x="-25%" y="-25%" width="150%" height="150%">
+      <feDropShadow dx="2" dy="6" stdDeviation="3.5" flood-color="#1a0d04" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Warm Oak Tabletop -->
+  <rect width="800" height="600" fill="url(#oakTable)"/>
+  <g stroke="#966c3b" stroke-width="1.2" opacity="0.22">
+    <line x1="0" y1="95" x2="800" y2="112"/>
+    <line x1="0" y1="210" x2="800" y2="225"/>
+    <line x1="0" y1="345" x2="800" y2="360"/>
+    <line x1="0" y1="485" x2="800" y2="500"/>
+  </g>
+
+  <!-- Wooden Strategy Hex Board Cluster (center) -->
+  <!-- Base dark wooden tray border -->
+  <g filter="url(#tileShadow)">
+    <!-- Row 1 (2 hexes) -->
+    <polygon points="335,105 385,134 385,192 335,221 285,192 285,134" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2.5"/>
+    <polygon points="441,105 491,134 491,192 441,221 391,192 391,134" fill="url(#hexWalnut)" stroke="#3d220d" stroke-width="2.5"/>
+
+    <!-- Row 2 (3 hexes) -->
+    <polygon points="282,197 332,226 332,284 282,313 232,284 232,226" fill="url(#hexSlate)" stroke="#242b38" stroke-width="2.5"/>
+    <polygon points="388,197 438,226 438,284 388,313 338,284 338,226" fill="url(#hexPurple)" stroke="#3c226d" stroke-width="2.5"/>
+    <polygon points="494,197 544,226 544,284 494,313 444,284 444,226" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2.5"/>
+
+    <!-- Row 3 (4 hexes) -->
+    <polygon points="229,289 279,318 279,376 229,405 179,376 179,318" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2.5"/>
+    <polygon points="335,289 385,318 385,376 335,405 285,376 285,318" fill="url(#hexWalnut)" stroke="#3d220d" stroke-width="2.5"/>
+    <polygon points="441,289 491,318 491,376 441,405 391,376 391,318" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2.5"/>
+    <polygon points="547,289 597,318 597,376 547,405 497,376 497,318" fill="url(#hexSlate)" stroke="#242b38" stroke-width="2.5"/>
+
+    <!-- Row 4 (3 hexes) -->
+    <polygon points="282,381 332,410 332,468 282,497 232,468 232,410" fill="url(#hexWalnut)" stroke="#3d220d" stroke-width="2.5"/>
+    <polygon points="388,381 438,410 438,468 388,497 338,468 338,410" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2.5"/>
+    <polygon points="494,381 544,410 544,468 494,497 444,468 444,410" fill="url(#hexWalnut)" stroke="#3d220d" stroke-width="2.5"/>
+  </g>
+
+  <!-- Subtle Laser-Engraved Geometric Markings on Tiles -->
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.24" stroke-width="1.5">
+    <circle cx="388" cy="255" r="24"/>
+    <circle cx="388" cy="255" r="10"/>
+    <circle cx="335" cy="163" r="18" stroke="#6d4222" stroke-opacity="0.28"/>
+    <circle cx="441" cy="347" r="18" stroke="#6d4222" stroke-opacity="0.28"/>
+    <polygon points="335,326 356,347 335,368 314,347" stroke="#f5d5a7" stroke-opacity="0.28"/>
+  </g>
+
+  <!-- Wooden Strategy Pawns & Pieces on Board -->
+  <!-- Center Purple King Pawn -->
+  <g transform="translate(388, 248)" filter="url(#pawnShadow)">
+    <ellipse cx="0" cy="14" rx="18" ry="8" fill="#44257a"/>
+    <path d="M -14 12 L -8 -18 L 8 -18 L 14 12 Z" fill="url(#hexPurple)" stroke="#2e1856" stroke-width="1.5"/>
+    <circle cx="0" cy="-24" r="11" fill="#b794f4" stroke="#2e1856" stroke-width="1.5"/>
+  </g>
+
+  <!-- Walnut Pawns -->
+  <g transform="translate(282, 250)" filter="url(#pawnShadow)">
+    <ellipse cx="0" cy="12" rx="15" ry="7" fill="#3a200c"/>
+    <path d="M -11 10 L -6 -14 L 6 -14 L 11 10 Z" fill="url(#hexWalnut)" stroke="#2b1708" stroke-width="1.5"/>
+    <circle cx="0" cy="-19" r="9" fill="#8b5a34" stroke="#2b1708" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(494, 250)" filter="url(#pawnShadow)">
+    <ellipse cx="0" cy="12" rx="15" ry="7" fill="#3a200c"/>
+    <path d="M -11 10 L -6 -14 L 6 -14 L 11 10 Z" fill="url(#hexWalnut)" stroke="#2b1708" stroke-width="1.5"/>
+    <circle cx="0" cy="-19" r="9" fill="#8b5a34" stroke="#2b1708" stroke-width="1.5"/>
+  </g>
+
+  <!-- Maple/Cream Pawns -->
+  <g transform="translate(335, 342)" filter="url(#pawnShadow)">
+    <ellipse cx="0" cy="12" rx="15" ry="7" fill="#b58954"/>
+    <path d="M -11 10 L -6 -14 L 6 -14 L 11 10 Z" fill="url(#hexOak)" stroke="#6d4222" stroke-width="1.5"/>
+    <circle cx="0" cy="-19" r="9" fill="#faebd0" stroke="#6d4222" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(388, 434)" filter="url(#pawnShadow)">
+    <ellipse cx="0" cy="12" rx="15" ry="7" fill="#b58954"/>
+    <path d="M -11 10 L -6 -14 L 6 -14 L 11 10 Z" fill="url(#hexOak)" stroke="#6d4222" stroke-width="1.5"/>
+    <circle cx="0" cy="-19" r="9" fill="#faebd0" stroke="#6d4222" stroke-width="1.5"/>
+  </g>
+
+  <!-- Player Wooden Tray & Strategy Tokens (Left) -->
+  <g transform="translate(55, 110) rotate(-8)" filter="url(#tileShadow)">
+    <rect x="0" y="0" width="110" height="195" rx="12" fill="url(#hexWalnut)" stroke="#3d220d" stroke-width="2"/>
+    <rect x="10" y="10" width="90" height="175" rx="8" fill="#462912"/>
+    <!-- Token discs -->
+    <circle cx="35" cy="40" r="14" fill="url(#hexPurple)" stroke="#2e1856" stroke-width="1.5"/>
+    <circle cx="75" cy="40" r="14" fill="url(#hexPurple)" stroke="#2e1856" stroke-width="1.5"/>
+    <circle cx="35" cy="80" r="14" fill="url(#hexOak)" stroke="#6d4222" stroke-width="1.5"/>
+    <circle cx="75" cy="80" r="14" fill="url(#hexOak)" stroke="#6d4222" stroke-width="1.5"/>
+    <circle cx="35" cy="120" r="14" fill="url(#hexSlate)" stroke="#242b38" stroke-width="1.5"/>
+    <circle cx="75" cy="120" r="14" fill="url(#hexSlate)" stroke="#242b38" stroke-width="1.5"/>
+  </g>
+
+  <!-- Strategy Cards & Wooden Dice (Right) -->
+  <g transform="translate(645, 290) rotate(9)" filter="url(#tileShadow)">
+    <rect x="0" y="0" width="96" height="135" rx="10" fill="#faf7ff" stroke="#d5cce8" stroke-width="2"/>
+    <rect x="12" y="12" width="72" height="111" rx="6" fill="#efeaff" stroke="#7950C8" stroke-width="1.5"/>
+    <polygon points="48,38 70,51 70,77 48,90 26,77 26,51" fill="#7950C8" opacity="0.85"/>
+    <circle cx="48" cy="64" r="10" fill="#ffffff"/>
+  </g>
+
+  <!-- Wooden Dice in foreground -->
+  <g transform="translate(665, 485) rotate(16)" filter="url(#pawnShadow)">
+    <rect x="-20" y="-20" width="40" height="40" rx="7" fill="url(#hexOak)" stroke="#6d4222" stroke-width="2"/>
+    <circle cx="-9" cy="-9" r="3.5" fill="#4b2c15"/>
+    <circle cx="9" cy="-9" r="3.5" fill="#4b2c15"/>
+    <circle cx="0" cy="0" r="3.5" fill="#4b2c15"/>
+    <circle cx="-9" cy="9" r="3.5" fill="#4b2c15"/>
+    <circle cx="9" cy="9" r="3.5" fill="#4b2c15"/>
+  </g>
+</svg>

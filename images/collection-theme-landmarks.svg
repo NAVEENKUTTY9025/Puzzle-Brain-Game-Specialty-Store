@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="trSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1e1b4b"/>
+      <stop offset="52%" stop-color="#6d3fc4"/>
+      <stop offset="85%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <linearGradient id="towerMetal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b2d54"/>
+      <stop offset="100%" stop-color="#181226"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Twilight Travel Sky -->
+  <rect width="800" height="600" fill="url(#trSky)"/>
+  <circle cx="215" cy="145" r="46" fill="#fef3c7" opacity="0.88"/>
+  <!-- Soft horizon clouds -->
+  <ellipse cx="180" cy="310" rx="170" ry="28" fill="#fbcfe8" opacity="0.22"/>
+  <ellipse cx="620" cy="270" rx="190" ry="32" fill="#e9d5ff" opacity="0.2"/>
+
+  <!-- City Skyline Silhouette -->
+  <path d="M 0 430 L 0 365 L 45 365 L 45 335 L 95 335 L 95 385 L 145 385 L 145 320 L 210 320 L 210 370 L 265 370 L 265 395 L 540 395 L 540 350 L 595 350 L 595 325 L 660 325 L 660 375 L 725 375 L 725 340 L 800 340 L 800 430 Z" fill="#181226" opacity="0.82"/>
+
+  <!-- Iconic Landmark Tower (Center) -->
+  <g fill="url(#towerMetal)">
+    <!-- Spire & Top -->
+    <rect x="397" y="42" width="6" height="44"/>
+    <polygon points="390,86 410,86 418,165 382,165"/>
+    <!-- Mid tapering shaft -->
+    <polygon points="382,165 418,165 446,268 354,268"/>
+    <rect x="348" y="268" width="104" height="14" rx="2" fill="#2d2045"/>
+    <!-- Lower spreading legs with arch -->
+    <path d="M 352 282 L 448 282 L 505 425 L 452 425 C 446 372 426 342 400 342 C 374 342 354 372 348 425 L 295 425 Z"/>
+    <rect x="366" y="190" width="68" height="10" rx="2" fill="#2d2045"/>
+  </g>
+  <!-- Warm Lattice Windows Glow -->
+  <g fill="#fde68a" opacity="0.7">
+    <rect x="394" y="120" width="12" height="12"/>
+    <rect x="378" y="210" width="10" height="10"/>
+    <rect x="412" y="210" width="10" height="10"/>
+    <rect x="160" y="340" width="8" height="10"/>
+    <rect x="180" y="340" width="8" height="10"/>
+    <rect x="615" y="345" width="8" height="10"/>
+    <rect x="635" y="345" width="8" height="10"/>
+  </g>
+
+  <!-- River Foreground -->
+  <rect y="425" width="800" height="175" fill="#130e21"/>
+  <ellipse cx="400" cy="462" rx="135" ry="12" fill="#ec4899" opacity="0.22"/>
+
+  <!-- Crisp Jigsaw Cut Overlay -->
+  <g fill="none" stroke="#080510" stroke-width="2" stroke-opacity="0.42">
+    <path d="M 0 155 L 120 155 C 120 143 138 143 138 155 L 260 155 C 260 167 278 167 278 155 L 400 155 C 400 143 418 143 418 155 L 540 155 C 540 167 558 167 558 155 L 680 155 C 680 143 698 143 698 155 L 800 155"/>
+    <path d="M 0 285 L 120 285 C 120 297 138 297 138 285 L 260 285 C 260 273 278 273 278 285 L 400 285 C 400 297 418 297 418 285 L 540 285 C 540 273 558 273 558 285 L 680 285 C 680 297 698 297 698 285 L 800 285"/>
+    <path d="M 190 0 L 190 90 C 202 90 202 108 190 108 L 190 215 C 178 215 178 233 190 233 L 190 600"/>
+    <path d="M 400 0 L 400 90 C 388 90 388 108 400 108 L 400 215 C 412 215 412 233 400 233 L 400 600"/>
+    <path d="M 610 0 L 610 90 C 622 90 622 108 610 108 L 610 215 C 598 215 598 233 610 233 L 610 600"/>
+  </g>
+</svg>

@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Arrivals | MindPiece Puzzle & Brain Game Store</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== COLOR SYSTEM: Black, White, Purple (#7950C8) ===== */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --purple: #7950C8;
+            --purple-light: #9b7ad9;
+            --purple-dark: #5e3b9e;
+            --gray-bg: #f7f5fc;
+            --card-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            --border-light: rgba(121, 80, 200, 0.2);
+            --nav-height: 80px;
+            --section-spacing: 100px;
+            --border-radius: 16px;
+            --border-radius-sm: 10px;
+            --transition: all 0.3s ease;
+
+            --bg-primary: var(--white);
+            --bg-secondary: var(--gray-bg);
+            --bg-card: var(--white);
+            --text-primary: var(--black);
+            --text-secondary: #3a3a3a;
+            --text-muted: #6b6b6b;
+            --accent: var(--purple);
+            --accent-light: #efeaff;
+            --border-color: #e2ddf0;
+            --shadow-color: rgba(0,0,0,0.05);
+
+            --logo-main: var(--black);
+            --logo-accent: var(--purple);
+
+            --dir: ltr;
+            --text-align: left;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1c1c1c;
+            --text-primary: #ffffff;
+            --text-secondary: #dddddd;
+            --text-muted: #a0a0a0;
+            --accent: var(--purple-light);
+            --accent-light: #2a1e3d;
+            --border-color: #2e2e2e;
+            --shadow-color: rgba(0,0,0,0.5);
+            --logo-main: var(--white);
+            --logo-accent: var(--purple-light);
+        }
+
+        [dir="rtl"] {
+            --dir: rtl;
+            --text-align: right;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Oxanium', 'Rajdhani', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            direction: var(--dir);
+            text-align: var(--text-align);
+            transition: background 0.3s, color 0.2s;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; border-radius: var(--border-radius-sm); }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: var(--section-spacing) 0;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span { color: var(--accent); }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            background: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(121, 80, 200, 0.25);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER & NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--bg-primary);
+            box-shadow: 0 5px 25px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--logo-main);
+        }
+
+        .logo-icon { color: var(--logo-accent); font-size: 2rem; }
+        .logo span { color: var(--logo-accent); }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link i { font-size: 0.8rem; transition: var(--transition); }
+
+        .nav-link:hover, .nav-item.active .nav-link {
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            z-index: 100;
+            padding: 8px 0;
+        }
+
+        [dir="rtl"] .dropdown {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .dropdown-link:hover,
+        .dropdown-link.active {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .dropdown-link.active {
+            font-weight: 700;
+            box-shadow: inset 3px 0 0 var(--accent);
+        }
+
+        [dir="rtl"] .dropdown-link.active {
+            box-shadow: inset -3px 0 0 var(--accent);
+        }
+
+        .dropdown-link:hover {
+            padding-left: 24px;
+        }
+
+        [dir="rtl"] .dropdown-link:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(121,80,200,0.3);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .control-btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: rotate(15deg);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* ===== SECTION 1: HERO WITH HD IMAGE ===== */
+        .new-hero {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 80px;
+            background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            overflow: hidden;
+        }
+
+        .new-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .new-hero-content .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(121, 80, 200, 0.12);
+            color: var(--accent);
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(121, 80, 200, 0.3);
+        }
+
+        .new-hero-content h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .new-hero-content h1 span { color: var(--accent); }
+
+        .new-hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.2rem;
+            line-height: 1.8;
+            max-width: 540px;
+        }
+
+        .new-hero-stats {
+            display: flex;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .new-hero-stats .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-hero-stats .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+
+        .new-hero-stats .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .new-hero-image {
+            position: relative;
+        }
+
+        .new-hero-image img {
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+            border: 4px solid var(--accent);
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .new-hero-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 70px rgba(121, 80, 200, 0.3);
+        }
+
+        .new-hero-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            z-index: -1;
+            border: 2px solid var(--accent);
+            opacity: 0.5;
+        }
+
+        /* ===== SECTION 2: NEW PRODUCTS GRID ===== */
+        .new-products-section {
+            background: var(--bg-secondary);
+        }
+
+        .new-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .new-product-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 25px 40px rgba(121, 80, 200, 0.15);
+        }
+
+        .new-product-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--accent-light);
+        }
+
+        .new-product-image.studio-contain {
+            background-color: #ffffff;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .new-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0;
+        }
+
+        .new-product-image.studio-contain img {
+            object-fit: contain;
+        }
+
+        .new-product-card:hover .new-product-image img {
+            transform: scale(1.06);
+        }
+
+        .new-product-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        [dir="rtl"] .new-product-badge {
+            right: auto;
+            left: 16px;
+        }
+
+        .new-product-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .new-product-title {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .new-product-title i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .new-product-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .new-product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .new-product-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .new-product-tag {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--border-light);
+        }
+
+        /* ===== SECTION 3: COMING SOON ===== */
+        .coming-soon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .coming-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .coming-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px rgba(121,80,200,0.12);
+        }
+
+        .coming-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background: var(--accent-light);
+        }
+
+        .coming-image.studio-contain {
+            background-color: #ffffff;
+            padding: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .coming-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+            transition: transform 0.5s ease;
+        }
+
+        .coming-image.studio-contain img {
+            object-fit: contain;
+        }
+
+        .coming-card:hover .coming-image img {
+            transform: scale(1.06);
+        }
+
+        .coming-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .coming-overlay i {
+            margin-right: 8px;
+            color: var(--purple-light);
+        }
+
+        [dir="rtl"] .coming-overlay i {
+            margin-right: 0;
+            margin-left: 8px;
+        }
+
+        .coming-content {
+            padding: 24px;
+        }
+
+        .coming-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .coming-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .coming-date {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        /* ===== SECTION 4: FEATURES ===== */
+        .new-features-section {
+            background: var(--bg-secondary);
+        }
+
+        .new-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .new-feature-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 40px 28px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .new-feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px rgba(121,80,200,0.12);
+        }
+
+        .new-feature-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--accent-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--accent);
+            border: 2px solid rgba(121,80,200,0.25);
+            transition: var(--transition);
+        }
+
+        .new-feature-card:hover .new-feature-icon {
+            background: var(--accent);
+            color: var(--white);
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .new-feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .new-feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== SECTION 5: NEWSLETTER ===== */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 0 24px;
+            text-align: center;
+        }
+
+        .newsletter-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .newsletter-section p {
+            font-size: 1.15rem;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 560px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 240px;
+            padding: 16px 24px;
+            border-radius: 50px;
+            border: 2px solid transparent;
+            font-size: 1rem;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .newsletter-form input:focus {
+            border-color: var(--white);
+        }
+
+        .newsletter-form .btn {
+            background: var(--white);
+            color: var(--purple);
+            border-color: var(--white);
+        }
+
+        .newsletter-form .btn:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* ===== SECTION 6: CTA ===== */
+        .cta-section {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 0 24px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section h2 span { color: var(--accent); }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--text-secondary);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER - WHITE BACKGROUND ===== */
+        footer {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 70px 0 30px;
+            border-top: 1px solid var(--border-color);
+            margin-top: var(--section-spacing);
+        }
+
+        [data-theme="dark"] footer {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span { color: var(--purple); }
+        .footer-logo-icon { color: var(--purple); font-size: 2rem; }
+
+        .footer-column p { color: #4a4a4a; margin-bottom: 20px; }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            color: var(--black);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--purple);
+        }
+
+        [dir="rtl"] .footer-column h3::after { left: auto; right: 0; }
+
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: #4a4a4a;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover { color: var(--purple); padding-left: 6px; }
+
+        [dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 6px; }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f0ecf9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 1px solid #e0d9f0;
+        }
+
+        .social-link:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--purple);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: #6b6b6b;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - var(--nav-height));
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 8px;
+                transition: var(--transition);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                z-index: 999;
+                border-right: 1px solid var(--border-color);
+                overflow-y: auto;
+            }
+            [dir="rtl"] .nav-links {
+                left: auto;
+                right: -100%;
+                border-right: none;
+                border-left: 1px solid var(--border-color);
+            }
+            .nav-links.active { left: 0; }
+            [dir="rtl"] .nav-links.active { right: 0; left: auto; }
+
+            .nav-link { justify-content: space-between; padding: 14px 16px; }
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: var(--bg-secondary);
+                margin-top: 5px;
+                display: none;
+                width: 100%;
+            }
+            .nav-item.active .dropdown { display: block; }
+
+            .mobile-toggle { display: flex; }
+            .nav-main { gap: 15px; }
+            .nav-cta { display: none; }
+
+            .new-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .new-hero-content p { margin-left: auto; margin-right: auto; }
+            .new-hero-stats { justify-content: center; }
+            .new-hero-image { order: -1; }
+            .new-hero-image img { height: 400px; }
+            .new-hero-content h1 { font-size: 2.8rem; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .section { padding: 70px 0; }
+            .section-title { font-size: 2.2rem; }
+            .new-hero-content h1 { font-size: 2.4rem; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .new-hero-image img { height: 320px; }
+            .newsletter-section h2 { font-size: 2.2rem; }
+            .cta-section h2 { font-size: 2.2rem; }
+        }
+
+        @media screen and (max-width: 500px) {
+            .new-hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .btn { width: 100%; }
+            .newsletter-section { padding: 50px 24px; margin: 0 12px; }
+            .cta-section { padding: 50px 24px; margin: 0 12px; }
+            .newsletter-section h2 { font-size: 1.8rem; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .logo { font-size: 1.5rem; }
+            .new-hero-stats { gap: 20px; }
+            .new-hero-stats .stat-number { font-size: 1.8rem; }
+            .new-hero-image img { height: 260px; }
+            .newsletter-form input { min-width: 100%; }
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .nav-overlay.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-puzzle-piece logo-icon"></i>
+                    Mind<span>Piece</span>
+                </a>
+
+                <div class="nav-main">
+                    <ul class="nav-links" id="navLinks">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <a href="home-1.html" class="dropdown-link"><i class="fas fa-home"></i> Home 1</a>
+                                <a href="home-2.html" class="dropdown-link"><i class="fas fa-home"></i> Home 2</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="shop.html" class="nav-link">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="collections.html" class="nav-link">Collections</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="new-arrivals.html" class="nav-link">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <a href="shop.html" class="nav-cta">
+                        <i class="fas fa-shopping-bag"></i> Shop Puzzles
+                    </a>
+
+                    <div class="nav-controls">
+                        <button class="control-btn" id="themeToggle" title="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="control-btn" id="dirToggle" title="Toggle RTL/LTR">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-overlay" id="navOverlay"></div>
+    </header>
+
+    <!-- SECTION 1: HERO WITH HD IMAGE -->
+    <section class="new-hero">
+        <div class="container">
+            <div class="new-hero-grid">
+                <div class="new-hero-content">
+                    <div class="badge">
+                        <i class="fas fa-sparkles"></i>
+                        Fresh Off the Shelf
+                    </div>
+                    <h1>New Arrivals for <span>Curious Minds</span></h1>
+                    <p>Be the first to explore our latest puzzle drops — from intricate wooden 3D builds to mind-bending metal teasers and beautifully illustrated jigsaws. New challenges added every week.</p>
+                    <div class="new-hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">48+</span>
+                            <span class="stat-label">New This Month</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">Weekly</span>
+                            <span class="stat-label">Fresh Drops</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9★</span>
+                            <span class="stat-label">Rated by Puzzlers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-hero-image">
+                    <img src="images/new-arrivals-hero.svg"
+                         alt="New puzzle arrivals"
+                         loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: NEW PRODUCTS GRID -->
+    <section class="section new-products-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Just <span>Landed</span></h2>
+                <p class="section-subtitle">The newest puzzles and brain games added to our collection.</p>
+            </div>
+            <div class="new-products-grid">
+                <div class="new-product-card">
+                    <div class="new-product-image studio-contain">
+                        <img src="images/h1.jpg" alt="3D Wooden Puzzle" loading="eager">
+                        <span class="new-product-badge">New</span>
+                    </div>
+                    <div class="new-product-content">
+                        <h3 class="new-product-title"><i class="fas fa-cube"></i> 3D Wooden Puzzle</h3>
+                        <p class="new-product-desc">Intricate laser-cut wooden puzzle – build your own masterpiece. Perfect for teens and adults.</p>
+                        <div class="new-product-meta">
+                            <span class="new-product-price">$39.99</span>
+                            <span class="new-product-tag">STEM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-product-card">
+                    <div class="new-product-image">
+                        <img src="images/h2.jpg" alt="Jigsaw Puzzle" loading="eager">
+                        <span class="new-product-badge">New</span>
+                    </div>
+                    <div class="new-product-content">
+                        <h3 class="new-product-title"><i class="fas fa-puzzle-piece"></i> 1000-Piece Jigsaw</h3>
+                        <p class="new-product-desc">Vibrant landscape puzzle with premium matte finish. Hours of relaxing fun.</p>
+                        <div class="new-product-meta">
+                            <span class="new-product-price">$24.99</span>
+                            <span class="new-product-tag">Classic</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-product-card">
+                    <div class="new-product-image">
+                        <img src="images/h3.jpg" alt="Brain Teaser Metal Puzzle" loading="eager">
+                        <span class="new-product-badge">New</span>
+                    </div>
+                    <div class="new-product-content">
+                        <h3 class="new-product-title"><i class="fas fa-brain"></i> Metal Brain Teaser</h3>
+                        <p class="new-product-desc">Set of 6 mind-bending metal puzzles. Challenge yourself or gift to a friend.</p>
+                        <div class="new-product-meta">
+                            <span class="new-product-price">$18.50</span>
+                            <span class="new-product-tag">IQ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="new-product-card">
+                    <div class="new-product-image studio-contain">
+                        <img src="images/h4.jpg" alt="Wooden Chess Set" loading="eager">
+                        <span class="new-product-badge">New</span>
+                    </div>
+                    <div class="new-product-content">
+                        <h3 class="new-product-title"><i class="fas fa-chess-board"></i> Wooden Chess Set</h3>
+                        <p class="new-product-desc">Handcrafted walnut chessboard with weighted pieces. A timeless strategy game.</p>
+                        <div class="new-product-meta">
+                            <span class="new-product-price">$89.99</span>
+                            <span class="new-product-tag">Strategy</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: COMING SOON -->
+    <section class="section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Coming <span>Soon</span></h2>
+                <p class="section-subtitle">Get a sneak peek at what's arriving next. Mark your calendars.</p>
+            </div>
+            <div class="coming-soon-grid">
+                <div class="coming-card">
+                    <div class="coming-image">
+                        <img src="images/shop-galaxy-jigsaw.svg" alt="Galaxy Jigsaw Puzzle" loading="lazy">
+                        <div class="coming-overlay"><i class="fas fa-clock"></i> Coming Soon</div>
+                    </div>
+                    <div class="coming-content">
+                        <h3>Galaxy 2000-Piece Jigsaw</h3>
+                        <p>A stunning cosmic scene with over 2000 pieces. For the ultimate puzzler.</p>
+                        <span class="coming-date"><i class="fas fa-calendar"></i> Arriving May 15</span>
+                    </div>
+                </div>
+                <div class="coming-card">
+                    <div class="coming-image">
+                        <img src="images/shop-mechanical-kit.svg" alt="Wooden Mechanical Puzzle" loading="lazy">
+                        <div class="coming-overlay"><i class="fas fa-clock"></i> Coming Soon</div>
+                    </div>
+                    <div class="coming-content">
+                        <h3>Mechanical Wooden Kit</h3>
+                        <p>Build a working wooden gear mechanism. A true STEM challenge.</p>
+                        <span class="coming-date"><i class="fas fa-calendar"></i> Arriving June 2</span>
+                    </div>
+                </div>
+                <div class="coming-card">
+                    <div class="coming-image studio-contain">
+                        <img src="images/h6.jpg" alt="Premium Puzzle Collection" loading="lazy">
+                        <div class="coming-overlay"><i class="fas fa-clock"></i> Coming Soon</div>
+                    </div>
+                    <div class="coming-content">
+                        <h3>Collector's Wooden Box Set</h3>
+                        <p>A limited-edition wooden puzzle collection in a handcrafted box.</p>
+                        <span class="coming-date"><i class="fas fa-calendar"></i> Arriving July 10</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: FEATURES -->
+    <section class="section new-features-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">What Makes Our New Arrivals <span>Special</span></h2>
+                <p class="section-subtitle">Every new drop is handpicked for quality, design, and challenge.</p>
+            </div>
+            <div class="new-features-grid">
+                <div class="new-feature-card">
+                    <div class="new-feature-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Premium Quality</h3>
+                    <p>Only the finest materials make it into our new arrivals — no compromises.</p>
+                </div>
+                <div class="new-feature-card">
+                    <div class="new-feature-icon"><i class="fas fa-palette"></i></div>
+                    <h3>Unique Designs</h3>
+                    <p>Exclusive artwork and designs you won't find anywhere else.</p>
+                </div>
+                <div class="new-feature-card">
+                    <div class="new-feature-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Brain-Boosting</h3>
+                    <p>Each puzzle is chosen to challenge and engage your mind.</p>
+                </div>
+                <div class="new-feature-card">
+                    <div class="new-feature-icon"><i class="fas fa-truck-fast"></i></div>
+                    <h3>Fast Shipping</h3>
+                    <p>New arrivals ship within 24 hours so you can start puzzling sooner.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: NEWSLETTER -->
+    <section class="section" style="padding-top: 0;">
+        <div class="newsletter-section">
+            <h2>Never Miss a Drop</h2>
+            <p>Subscribe to our newsletter and be the first to know about new arrivals, exclusive discounts, and puzzle tips from our team.</p>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA -->
+    <section class="section" style="padding-top: 0;">
+        <div class="cta-section">
+            <h2>Explore the Full <span>Collection</span></h2>
+            <p>Browse our entire range of puzzles and brain games. There's a challenge waiting for every mind.</p>
+            <div class="cta-buttons">
+                <a href="shop.html" class="btn btn-primary"><i class="fas fa-puzzle-piece"></i> Shop All Puzzles</a>
+                <a href="collections.html" class="btn btn-outline"><i class="fas fa-gift"></i> View Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - WHITE BACKGROUND -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-puzzle-piece footer-logo-icon"></i>
+                        Mind<span>Piece</span>
+                    </a>
+                    <p>Curating the world's finest puzzles and brain games to inspire and challenge.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop All</a></li>
+                        <li><a href="new-arrivals.html"><i class="fas fa-chevron-right"></i> New Arrivals</a></li>
+                        <li><a href="collections.html"><i class="fas fa-chevron-right"></i> Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping & Returns</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Puzzle Lane</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +1 (800) 555-MIND</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@mindpiece.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2025</span> MindPiece Puzzle & Brain Game Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const dirToggle = document.getElementById('dirToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        const dirIcon = dirToggle.querySelector('i');
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        themeToggle.addEventListener('click', () => {
+            const current = body.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeIcon.className = next === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        function initDirection() {
+            const savedDir = localStorage.getItem('direction') || 'ltr';
+            body.setAttribute('dir', savedDir);
+            updateDirIcon(savedDir);
+        }
+        function updateDirIcon(dir) {
+            dirIcon.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        }
+        dirToggle.addEventListener('click', () => {
+            const current = body.getAttribute('dir');
+            const next = current === 'ltr' ? 'rtl' : 'ltr';
+            body.setAttribute('dir', next);
+            localStorage.setItem('direction', next);
+            updateDirIcon(next);
+        });
+
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', toggleMobileMenu);
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const dropdown = item.querySelector('.dropdown');
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        document.querySelectorAll('.nav-item').forEach(other => {
+                            if (other !== item) other.classList.remove('active');
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (!link.closest('.nav-item').querySelector('.dropdown')) {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) toggleMobileMenu();
+                });
+            }
+        });
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) toggleMobileMenu();
+            });
+        });
+
+        document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for subscribing! You will be the first to know about new arrivals.');
+            this.reset();
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        initTheme();
+        initDirection();
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                body.style.overflow = '';
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
+</body>
+</html>

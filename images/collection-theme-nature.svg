@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="natSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b2667"/>
+      <stop offset="45%" stop-color="#8b5cf6"/>
+      <stop offset="82%" stop-color="#fda4af"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </linearGradient>
+    <linearGradient id="natLake" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6d569e"/>
+      <stop offset="50%" stop-color="#2b3d63"/>
+      <stop offset="100%" stop-color="#111d33"/>
+    </linearGradient>
+    <linearGradient id="mtnFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5b438a"/>
+      <stop offset="100%" stop-color="#2e224d"/>
+    </linearGradient>
+    <linearGradient id="mtnNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a4d4b"/>
+      <stop offset="100%" stop-color="#122625"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky & Sun -->
+  <rect width="800" height="390" fill="url(#natSky)"/>
+  <circle cx="520" cy="175" r="56" fill="#fef3c7" opacity="0.9"/>
+  <circle cx="520" cy="175" r="90" fill="#fde68a" opacity="0.25"/>
+
+  <!-- Far Alpine Mountains -->
+  <polygon points="0,330 130,175 265,285 415,130 570,275 700,185 800,295 800,390 0,390" fill="url(#mtnFar)"/>
+  <!-- Snow caps -->
+  <polygon points="415,130 375,182 405,172 428,192 455,172" fill="#f5f3ff" opacity="0.88"/>
+  <polygon points="130,175 102,212 125,205 142,218 160,208" fill="#f5f3ff" opacity="0.78"/>
+
+  <!-- Mid-ground Forested Ridges -->
+  <polygon points="0,360 190,245 370,355 595,235 800,340 800,395 0,395" fill="url(#mtnNear)"/>
+
+  <!-- Mirror Lake -->
+  <rect y="365" width="800" height="235" fill="url(#natLake)"/>
+  <ellipse cx="520" cy="415" rx="68" ry="10" fill="#fde68a" opacity="0.35"/>
+  <ellipse cx="520" cy="442" rx="45" ry="6" fill="#fda4af" opacity="0.28"/>
+
+  <!-- Pine Trees Silhouette on Foreground Left & Right -->
+  <g fill="#0c191a">
+    <polygon points="45,420 75,285 105,420"/>
+    <polygon points="95,430 128,255 162,430"/>
+    <polygon points="150,420 178,310 206,420"/>
+    <polygon points="650,425 685,270 720,425"/>
+    <polygon points="710,435 745,295 780,435"/>
+  </g>
+
+  <!-- Crisp Jigsaw Puzzle Cut Grid Over Scene -->
+  <g fill="none" stroke="#090612" stroke-width="2" stroke-opacity="0.48">
+    <path d="M 0 150 L 90 150 C 90 138 108 138 108 150 L 190 150 C 190 162 208 162 208 150 L 290 150 C 290 138 308 138 308 150 L 390 150 C 390 162 408 162 408 150 L 490 150 C 490 138 508 138 508 150 L 590 150 C 590 162 608 162 608 150 L 690 150 C 690 138 708 138 708 150 L 800 150"/>
+    <path d="M 0 270 L 90 270 C 90 282 108 282 108 270 L 190 270 C 190 258 208 258 208 270 L 290 270 C 290 282 308 282 308 270 L 390 270 C 390 258 408 258 408 270 L 490 270 C 490 282 508 282 508 270 L 590 270 C 590 258 608 258 608 270 L 690 270 C 690 282 708 282 708 270 L 800 270"/>
+    <path d="M 150 0 L 150 75 C 162 75 162 93 150 93 L 150 195 C 138 195 138 213 150 213 L 150 320 C 162 320 162 338 150 338 L 150 600"/>
+    <path d="M 350 0 L 350 75 C 338 75 338 93 350 93 L 350 195 C 362 195 362 213 350 213 L 350 320 C 338 320 338 338 350 338 L 350 600"/>
+    <path d="M 550 0 L 550 75 C 562 75 562 93 550 93 L 550 195 C 538 195 538 213 550 213 L 550 320 C 562 320 562 338 550 338 L 550 600"/>
+  </g>
+</svg>

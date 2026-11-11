@@ -1,0 +1,1680 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop | MindPiece Puzzle & Brain Game Store</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== COLOR SYSTEM: Black, White, Purple (#7950C8) ===== */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --purple: #7950C8;
+            --purple-light: #9b7ad9;
+            --purple-dark: #5e3b9e;
+            --gray-bg: #f7f5fc;
+            --card-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            --border-light: rgba(121, 80, 200, 0.2);
+            --nav-height: 80px;
+            --section-spacing: 100px;
+            --border-radius: 16px;
+            --border-radius-sm: 10px;
+            --transition: all 0.3s ease;
+
+            --bg-primary: var(--white);
+            --bg-secondary: var(--gray-bg);
+            --bg-card: var(--white);
+            --text-primary: var(--black);
+            --text-secondary: #3a3a3a;
+            --text-muted: #6b6b6b;
+            --accent: var(--purple);
+            --accent-light: #efeaff;
+            --border-color: #e2ddf0;
+            --shadow-color: rgba(0,0,0,0.05);
+
+            --logo-main: var(--black);
+            --logo-accent: var(--purple);
+
+            --dir: ltr;
+            --text-align: left;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1c1c1c;
+            --text-primary: #ffffff;
+            --text-secondary: #dddddd;
+            --text-muted: #a0a0a0;
+            --accent: var(--purple-light);
+            --accent-light: #2a1e3d;
+            --border-color: #2e2e2e;
+            --shadow-color: rgba(0,0,0,0.5);
+            --logo-main: var(--white);
+            --logo-accent: var(--purple-light);
+        }
+
+        [dir="rtl"] {
+            --dir: rtl;
+            --text-align: right;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Oxanium', 'Rajdhani', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            direction: var(--dir);
+            text-align: var(--text-align);
+            transition: background 0.3s, color 0.2s;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; border-radius: var(--border-radius-sm); }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: var(--section-spacing) 0;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span { color: var(--accent); }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            background: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(121, 80, 200, 0.25);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER & NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--bg-primary);
+            box-shadow: 0 5px 25px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--logo-main);
+        }
+
+        .logo-icon { color: var(--logo-accent); font-size: 2rem; }
+        .logo span { color: var(--logo-accent); }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link i { font-size: 0.8rem; transition: var(--transition); }
+
+        .nav-link:hover, .nav-item.active .nav-link {
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            z-index: 100;
+            padding: 8px 0;
+        }
+
+        [dir="rtl"] .dropdown {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .dropdown-link:hover,
+        .dropdown-link.active {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .dropdown-link.active {
+            font-weight: 700;
+            box-shadow: inset 3px 0 0 var(--accent);
+        }
+
+        [dir="rtl"] .dropdown-link.active {
+            box-shadow: inset -3px 0 0 var(--accent);
+        }
+
+        .dropdown-link:hover {
+            padding-left: 24px;
+        }
+
+        [dir="rtl"] .dropdown-link:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(121,80,200,0.3);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .control-btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: rotate(15deg);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* ===== SECTION 1: SHOP HERO ===== */
+        .shop-hero {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 70px;
+            background: linear-gradient(145deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+        }
+
+        .shop-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .shop-hero-content {
+            text-align: start;
+        }
+
+        .shop-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(121, 80, 200, 0.12);
+            color: var(--accent);
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(121, 80, 200, 0.3);
+        }
+
+        .shop-hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .shop-hero h1 span { color: var(--accent); }
+
+        .shop-hero p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 580px;
+            line-height: 1.8;
+        }
+
+        .shop-hero-stats {
+            display: flex;
+            gap: 40px;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .shop-hero-stats .stat {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .shop-hero-stats .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1.1;
+        }
+
+        .shop-hero-stats .stat-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .shop-hero-image {
+            position: relative;
+        }
+
+        .shop-hero-image::before {
+            content: '';
+            position: absolute;
+            width: 140px;
+            height: 140px;
+            background: var(--accent);
+            border-radius: 50%;
+            top: -20px;
+            right: -20px;
+            opacity: 0.14;
+            z-index: 0;
+        }
+
+        [dir="rtl"] .shop-hero-image::before {
+            right: auto;
+            left: -20px;
+        }
+
+        .shop-hero-image img {
+            position: relative;
+            z-index: 1;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+            border: 4px solid var(--accent);
+            width: 100%;
+            height: 440px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .shop-hero-image img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 35px 70px rgba(121, 80, 200, 0.3);
+        }
+
+        /* ===== SECTION 2: FILTER BAR ===== */
+        .filter-section {
+            padding: 40px 0;
+            background: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* ===== SECTION 3: PRODUCTS GRID ===== */
+        .shop-products {
+            background: var(--bg-secondary);
+        }
+
+        .shop-toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .shop-toolbar .result-count {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .shop-toolbar .sort-select {
+            padding: 10px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-family: inherit;
+            outline: none;
+        }
+
+        .shop-toolbar .sort-select:focus {
+            border-color: var(--accent);
+        }
+
+        .shop-products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .shop-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 25px 40px rgba(121, 80, 200, 0.15);
+        }
+
+        .shop-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--accent-light);
+        }
+
+        .shop-image.studio-contain {
+            background-color: #ffffff;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .shop-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0;
+        }
+
+        .shop-image.studio-contain img {
+            object-fit: contain;
+        }
+
+        .shop-card:hover .shop-image img {
+            transform: scale(1.06);
+        }
+
+        .shop-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        [dir="rtl"] .shop-badge {
+            right: auto;
+            left: 16px;
+        }
+
+        .shop-badge.sale {
+            background: #e74c3c;
+        }
+
+        .shop-content {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .shop-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .shop-title i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .shop-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .shop-rating {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 16px;
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .shop-rating span {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .shop-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .shop-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .shop-tag {
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid var(--border-light);
+        }
+
+        .shop-add-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+            padding: 12px;
+            border-radius: 30px;
+            background: var(--accent);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid var(--accent);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .shop-add-btn:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* ===== SECTION 4: PROMO BANNERS ===== */
+        .promo-section {
+            background: var(--bg-primary);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .promo-card {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 320px;
+            border: 2px solid var(--border-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .promo-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(121,80,200,0.15);
+        }
+
+        .promo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            border-radius: 0;
+        }
+
+        .promo-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .promo-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            color: var(--white);
+        }
+
+        .promo-overlay .promo-tag {
+            display: inline-block;
+            background: var(--purple);
+            color: var(--white);
+            padding: 4px 14px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+            align-self: flex-start;
+        }
+
+        .promo-overlay h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .promo-overlay p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+            margin-bottom: 12px;
+        }
+
+        .promo-overlay .promo-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--purple-light);
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .promo-card:hover .promo-link {
+            gap: 12px;
+        }
+
+        /* ===== SECTION 5: BULK / GIFT CTA ===== */
+        .bulk-section {
+            background: var(--bg-secondary);
+        }
+
+        .bulk-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .bulk-content h2 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+
+        .bulk-content h2 span { color: var(--accent); }
+
+        .bulk-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .bulk-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 2rem;
+        }
+
+        .bulk-list-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .bulk-list-item i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .bulk-image img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.12);
+            border: 3px solid var(--accent);
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+        }
+
+        /* ===== SECTION 6: CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 0 24px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-section .btn {
+            background: var(--white);
+            color: var(--purple);
+            border-color: var(--white);
+        }
+
+        .cta-section .btn:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .cta-section .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-section .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--purple);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER - WHITE BACKGROUND ===== */
+        footer {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 70px 0 30px;
+            border-top: 1px solid var(--border-color);
+            margin-top: var(--section-spacing);
+        }
+
+        [data-theme="dark"] footer {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span { color: var(--purple); }
+        .footer-logo-icon { color: var(--purple); font-size: 2rem; }
+
+        .footer-column p { color: #4a4a4a; margin-bottom: 20px; }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            color: var(--black);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--purple);
+        }
+
+        [dir="rtl"] .footer-column h3::after { left: auto; right: 0; }
+
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: #4a4a4a;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover { color: var(--purple); padding-left: 6px; }
+
+        [dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 6px; }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f0ecf9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 1px solid #e0d9f0;
+        }
+
+        .social-link:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--purple);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: #6b6b6b;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - var(--nav-height));
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 8px;
+                transition: var(--transition);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                z-index: 999;
+                border-right: 1px solid var(--border-color);
+                overflow-y: auto;
+            }
+            [dir="rtl"] .nav-links {
+                left: auto;
+                right: -100%;
+                border-right: none;
+                border-left: 1px solid var(--border-color);
+            }
+            .nav-links.active { left: 0; }
+            [dir="rtl"] .nav-links.active { right: 0; left: auto; }
+
+            .nav-link { justify-content: space-between; padding: 14px 16px; }
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: var(--bg-secondary);
+                margin-top: 5px;
+                display: none;
+                width: 100%;
+            }
+            .nav-item.active .dropdown { display: block; }
+
+            .mobile-toggle { display: flex; }
+            .nav-main { gap: 15px; }
+            .nav-cta { display: none; }
+
+            .bulk-grid { grid-template-columns: 1fr; gap: 40px; }
+            .bulk-image { order: -1; }
+            .bulk-image img { height: 320px; }
+
+            .shop-hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .shop-hero-content { text-align: center; }
+            .shop-hero p { margin-left: auto; margin-right: auto; }
+            .shop-hero-stats { justify-content: center; }
+            .shop-hero-stats .stat { align-items: center; }
+            .shop-hero-image { order: -1; max-width: 680px; margin: 0 auto; width: 100%; }
+            .shop-hero-image img { height: 380px; }
+            .shop-hero h1 { font-size: 2.8rem; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .section { padding: 70px 0; }
+            .section-title { font-size: 2.2rem; }
+            .shop-hero h1 { font-size: 2.4rem; }
+            .shop-hero-image img { height: 300px; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .bulk-content h2 { font-size: 2rem; }
+            .bulk-image img { height: 280px; }
+            .cta-section h2 { font-size: 2.2rem; }
+            .promo-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media screen and (max-width: 500px) {
+            .shop-hero h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .btn { width: 100%; }
+            .cta-section { padding: 50px 24px; margin: 0 12px; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .logo { font-size: 1.5rem; }
+            .shop-hero-stats { gap: 20px; }
+            .shop-hero-stats .stat-number { font-size: 1.8rem; }
+            .shop-hero-image img { height: 240px; border-radius: 22px; }
+            .shop-hero-image::before { width: 90px; height: 90px; top: -12px; right: -12px; }
+            [dir="rtl"] .shop-hero-image::before { right: auto; left: -12px; }
+            .promo-grid { grid-template-columns: 1fr; }
+            .bulk-image img { height: 240px; }
+            .filter-bar { gap: 8px; }
+            .filter-btn { padding: 8px 16px; font-size: 0.8rem; }
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .nav-overlay.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-puzzle-piece logo-icon"></i>
+                    Mind<span>Piece</span>
+                </a>
+
+                <div class="nav-main">
+                    <ul class="nav-links" id="navLinks">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <a href="home-1.html" class="dropdown-link"><i class="fas fa-home"></i> Home 1</a>
+                                <a href="home-2.html" class="dropdown-link"><i class="fas fa-home"></i> Home 2</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a href="shop.html" class="nav-link">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="collections.html" class="nav-link">Collections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="new-arrivals.html" class="nav-link">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <a href="shop.html" class="nav-cta">
+                        <i class="fas fa-shopping-bag"></i> Shop Puzzles
+                    </a>
+
+                    <div class="nav-controls">
+                        <button class="control-btn" id="themeToggle" title="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="control-btn" id="dirToggle" title="Toggle RTL/LTR">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-overlay" id="navOverlay"></div>
+    </header>
+
+    <!-- SECTION 1: SHOP HERO -->
+    <section class="shop-hero">
+        <div class="container">
+            <div class="shop-hero-grid">
+                <div class="shop-hero-content">
+                    <div class="badge">
+                        <i class="fas fa-shopping-bag"></i>
+                        Shop All Puzzles
+                    </div>
+                    <h1>Find Your Next <span>Challenge</span></h1>
+                    <p>Browse our full collection of jigsaw puzzles, 3D builds, brain teasers, and strategy games. Every puzzle is handpicked for quality and designed to sharpen your mind.</p>
+                    <div class="shop-hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">2K+</span>
+                            <span class="stat-label">Puzzle Designs</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">50K+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">4.9★</span>
+                            <span class="stat-label">Average Rating</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-hero-image">
+                    <img src="images/shop-hero.svg" alt="MindPiece curated puzzles, 3D wooden builds, brain teasers, and strategy games showcase" loading="eager">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: FILTER BAR -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All Puzzles</button>
+                <button class="filter-btn" data-filter="jigsaw">Jigsaw</button>
+                <button class="filter-btn" data-filter="3d">3D Puzzles</button>
+                <button class="filter-btn" data-filter="brain">Brain Teasers</button>
+                <button class="filter-btn" data-filter="strategy">Strategy</button>
+                <button class="filter-btn" data-filter="sale">On Sale</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: PRODUCTS GRID -->
+    <section class="section shop-products">
+        <div class="container">
+            <div class="shop-toolbar">
+                <span class="result-count">Showing 8 of 8 puzzles</span>
+                <select class="sort-select" id="sortSelect">
+                    <option value="featured">Sort by: Featured</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+            <div class="shop-products-grid" id="productsGrid">
+                <!-- Product 1 -->
+                <div class="shop-card" data-category="3d" data-price="39.99" data-rating="5">
+                    <div class="shop-image studio-contain">
+                        <img src="images/h1.jpg" alt="3D Wooden Puzzle" loading="eager">
+                        <span class="shop-badge">Bestseller</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-cube"></i> 3D Wooden Puzzle</h3>
+                        <p class="shop-desc">Intricate laser-cut wooden puzzle – build your own masterpiece. Perfect for teens and adults.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(128)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$39.99</span>
+                            <span class="shop-tag">STEM</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="shop-card" data-category="jigsaw" data-price="24.99" data-rating="4.8">
+                    <div class="shop-image">
+                        <img src="images/h2.jpg" alt="1000-Piece Jigsaw" loading="eager">
+                        <span class="shop-badge">New</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-puzzle-piece"></i> 1000-Piece Jigsaw</h3>
+                        <p class="shop-desc">Vibrant landscape puzzle with premium matte finish. Hours of relaxing fun.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(94)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$24.99</span>
+                            <span class="shop-tag">Classic</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="shop-card" data-category="brain" data-price="18.50" data-rating="4.9">
+                    <div class="shop-image">
+                        <img src="images/h3.jpg" alt="Metal Brain Teaser" loading="eager">
+                        <span class="shop-badge">Popular</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-brain"></i> Metal Brain Teaser</h3>
+                        <p class="shop-desc">Set of 6 mind-bending metal puzzles. Challenge yourself or gift to a friend.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(211)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$18.50</span>
+                            <span class="shop-tag">IQ</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="shop-card" data-category="strategy" data-price="89.99" data-rating="5">
+                    <div class="shop-image studio-contain">
+                        <img src="images/h4.jpg" alt="Wooden Chess Set" loading="eager">
+                        <span class="shop-badge">Premium</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-chess-board"></i> Wooden Chess Set</h3>
+                        <p class="shop-desc">Handcrafted walnut chessboard with weighted pieces. A timeless strategy game.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(67)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$89.99</span>
+                            <span class="shop-tag">Strategy</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 5 -->
+                <div class="shop-card" data-category="jigsaw sale" data-price="19.99" data-rating="4.7">
+                    <div class="shop-image">
+                        <img src="images/shop-galaxy-jigsaw.svg" alt="Galaxy 2000-Piece Jigsaw Puzzle" loading="lazy">
+                        <span class="shop-badge sale">Sale</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-puzzle-piece"></i> Galaxy 2000-Piece</h3>
+                        <p class="shop-desc">A stunning cosmic scene with over 2000 pieces. For the ultimate puzzler.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(58)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$19.99 <small style="color:var(--text-muted);text-decoration:line-through;font-size:0.9rem;">$29.99</small></span>
+                            <span class="shop-tag">Sale</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 6 -->
+                <div class="shop-card" data-category="3d" data-price="44.99" data-rating="4.8">
+                    <div class="shop-image">
+                        <img src="images/shop-mechanical-kit.svg" alt="Mechanical Wooden Kit" loading="lazy">
+                        <span class="shop-badge">New</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-gear"></i> Mechanical Wooden Kit</h3>
+                        <p class="shop-desc">Build a working wooden gear mechanism. A true STEM challenge.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(42)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$44.99</span>
+                            <span class="shop-tag">STEM</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 7 -->
+                <div class="shop-card" data-category="brain" data-price="22.99" data-rating="4.6">
+                    <div class="shop-image studio-contain">
+                        <img src="images/h6.jpg" alt="Wooden Logic Puzzle" loading="lazy">
+                        <span class="shop-badge">Popular</span>
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-brain"></i> Wooden Logic Puzzle</h3>
+                        <p class="shop-desc">Classic wooden brain teaser with 20+ challenges. Great for all ages.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(89)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$22.99</span>
+                            <span class="shop-tag">Logic</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+
+                <!-- Product 8 -->
+                <div class="shop-card" data-category="strategy" data-price="34.99" data-rating="4.7">
+                    <div class="shop-image">
+                        <img src="images/shop-strategy-board.svg" alt="Strategy Board Game" loading="lazy">
+                    </div>
+                    <div class="shop-content">
+                        <h3 class="shop-title"><i class="fas fa-chess"></i> Strategy Board Game</h3>
+                        <p class="shop-desc">Modern strategy game with wooden pieces. Perfect for game nights.</p>
+                        <div class="shop-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(73)</span></div>
+                        <div class="shop-meta">
+                            <span class="shop-price">$34.99</span>
+                            <span class="shop-tag">Strategy</span>
+                        </div>
+                        <button class="shop-add-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: PROMO BANNERS -->
+    <section class="section promo-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Featured <span>Collections</span></h2>
+                <p class="section-subtitle">Explore curated collections for every type of puzzler.</p>
+            </div>
+            <div class="promo-grid">
+                <div class="promo-card">
+                    <img src="images/shop-promo-beginner.svg" alt="Beginner Puzzles" loading="lazy">
+                    <div class="promo-overlay">
+                        <span class="promo-tag">Beginner</span>
+                        <h3>Start Your Puzzle Journey</h3>
+                        <p>Easy-to-solve puzzles perfect for first-timers.</p>
+                        <a href="#productsGrid" class="promo-link" data-filter-target="jigsaw">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="images/shop-promo-expert.svg" alt="Expert Puzzles" loading="lazy">
+                    <div class="promo-overlay">
+                        <span class="promo-tag">Expert</span>
+                        <h3>For the Ultimate Challenger</h3>
+                        <p>Complex puzzles that push your limits.</p>
+                        <a href="#productsGrid" class="promo-link" data-filter-target="brain">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="images/shop-promo-wooden.svg" alt="Premium Wooden Puzzles" loading="lazy">
+                    <div class="promo-overlay">
+                        <span class="promo-tag">Premium</span>
+                        <h3>Handcrafted Wooden Puzzles</h3>
+                        <p>Beautiful, durable puzzles made to last.</p>
+                        <a href="#productsGrid" class="promo-link" data-filter-target="3d">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BULK / GIFT CTA -->
+    <section class="section bulk-section">
+        <div class="container">
+            <div class="bulk-grid">
+                <div class="bulk-content">
+                    <h2>Buying in <span>Bulk?</span></h2>
+                    <p>Whether you're a school, retailer, or event organizer, we offer special pricing on bulk orders. Custom branding and gift wrapping available.</p>
+                    <div class="bulk-list">
+                        <div class="bulk-list-item"><i class="fas fa-check-circle"></i> Discounts up to 30% on bulk orders</div>
+                        <div class="bulk-list-item"><i class="fas fa-check-circle"></i> Custom puzzle designs for your brand</div>
+                        <div class="bulk-list-item"><i class="fas fa-check-circle"></i> Gift wrapping and personalization</div>
+                        <div class="bulk-list-item"><i class="fas fa-check-circle"></i> Dedicated account manager</div>
+                    </div>
+                    <a href="contact.html" class="btn btn-primary"><i class="fas fa-envelope"></i> Request a Quote</a>
+                </div>
+                <div class="bulk-image">
+                    <img src="images/shop-bulk-gifts.svg" alt="Bulk puzzle order" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA -->
+    <section class="section" style="padding-top: 0;">
+        <div class="cta-section">
+            <h2>Not Sure Where to Start?</h2>
+            <p>Take our puzzle quiz or contact our team for personalized recommendations based on your skill level and interests.</p>
+            <div class="cta-buttons">
+                <a href="contact.html" class="btn btn-primary"><i class="fas fa-comments"></i> Get Recommendations</a>
+                <a href="new-arrivals.html" class="btn btn-outline-light"><i class="fas fa-sparkles"></i> See New Arrivals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - WHITE BACKGROUND -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-puzzle-piece footer-logo-icon"></i>
+                        Mind<span>Piece</span>
+                    </a>
+                    <p>Curating the world's finest puzzles and brain games to inspire and challenge.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop All</a></li>
+                        <li><a href="new-arrivals.html"><i class="fas fa-chevron-right"></i> New Arrivals</a></li>
+                        <li><a href="collections.html"><i class="fas fa-chevron-right"></i> Gift Cards</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping & Returns</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Puzzle Lane</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +1 (800) 555-MIND</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@mindpiece.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2025</span> MindPiece Puzzle & Brain Game Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const dirToggle = document.getElementById('dirToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        const dirIcon = dirToggle.querySelector('i');
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        themeToggle.addEventListener('click', () => {
+            const current = body.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeIcon.className = next === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        function initDirection() {
+            const savedDir = localStorage.getItem('direction') || 'ltr';
+            body.setAttribute('dir', savedDir);
+            updateDirIcon(savedDir);
+        }
+        function updateDirIcon(dir) {
+            dirIcon.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        }
+        dirToggle.addEventListener('click', () => {
+            const current = body.getAttribute('dir');
+            const next = current === 'ltr' ? 'rtl' : 'ltr';
+            body.setAttribute('dir', next);
+            localStorage.setItem('direction', next);
+            updateDirIcon(next);
+        });
+
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', toggleMobileMenu);
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const dropdown = item.querySelector('.dropdown');
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        document.querySelectorAll('.nav-item').forEach(other => {
+                            if (other !== item) other.classList.remove('active');
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (!link.closest('.nav-item').querySelector('.dropdown')) {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) toggleMobileMenu();
+                });
+            }
+        });
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) toggleMobileMenu();
+            });
+        });
+
+        // Filter functionality
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const productCards = document.querySelectorAll('.shop-card');
+        const resultCount = document.querySelector('.result-count');
+
+        function applyFilter(filter) {
+            filterBtns.forEach(b => {
+                b.classList.toggle('active', b.getAttribute('data-filter') === filter);
+            });
+            let visible = 0;
+            productCards.forEach(card => {
+                const categories = (card.getAttribute('data-category') || '').trim().split(/\s+/);
+                if (filter === 'all' || categories.includes(filter)) {
+                    card.style.display = 'flex';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            resultCount.textContent = `Showing ${visible} of ${productCards.length} puzzles`;
+        }
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                applyFilter(btn.getAttribute('data-filter'));
+            });
+        });
+
+        document.querySelectorAll('.promo-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                const link = card.querySelector('.promo-link[data-filter-target]');
+                if (!link) return;
+                e.preventDefault();
+                applyFilter(link.getAttribute('data-filter-target'));
+                document.getElementById('productsGrid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Sort functionality
+        const sortSelect = document.getElementById('sortSelect');
+        const productsGrid = document.getElementById('productsGrid');
+
+        sortSelect.addEventListener('change', () => {
+            const cards = Array.from(productCards);
+            const sortBy = sortSelect.value;
+
+            cards.sort((a, b) => {
+                const priceA = parseFloat(a.getAttribute('data-price'));
+                const priceB = parseFloat(b.getAttribute('data-price'));
+                const ratingA = parseFloat(a.getAttribute('data-rating'));
+                const ratingB = parseFloat(b.getAttribute('data-rating'));
+
+                if (sortBy === 'price-low') return priceA - priceB;
+                if (sortBy === 'price-high') return priceB - priceA;
+                if (sortBy === 'rating') return ratingB - ratingA;
+                return 0;
+            });
+
+            cards.forEach(card => productsGrid.appendChild(card));
+        });
+
+        // Add to cart buttons
+        document.querySelectorAll('.shop-add-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const title = this.closest('.shop-card').querySelector('.shop-title').textContent.trim();
+                alert(`"${title}" added to your cart!`);
+            });
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        initTheme();
+        initDirection();
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                body.style.overflow = '';
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
+</body>
+</html>

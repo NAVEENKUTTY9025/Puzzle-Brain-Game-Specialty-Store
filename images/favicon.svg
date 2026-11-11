@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b62db"/>
+      <stop offset="55%" stop-color="#7950C8"/>
+      <stop offset="100%" stop-color="#533294"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="16" fill="url(#bg)"/>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="none" stroke="#d8c8fb" stroke-width="1.5" stroke-opacity="0.35"/>
+  <!-- Crisp Interlocking Puzzle Piece Silhouette -->
+  <path d="M17,21 H25 C25,15 35,15 35,21 H43 V29 C49,29 49,39 43,39 V47 H35 C35,41 25,41 25,47 H17 V39 C23,39 23,29 17,29 Z" fill="#ffffff"/>
+</svg>

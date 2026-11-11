@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-labelledby="title desc">
+  <title id="title">New Puzzle Arrivals Showcase</title>
+  <desc>Fresh puzzle arrivals displayed on a purple studio pedestal including a mechanical wooden gear sphere, iridescent interlocking cube, and brass lock box.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7f5fc"/>
+      <stop offset="50%" stop-color="#ede6fb"/>
+      <stop offset="100%" stop-color="#dcd0f7"/>
+    </linearGradient>
+    <linearGradient id="pedestalTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#eee8fc"/>
+    </linearGradient>
+    <linearGradient id="pedestalSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7950C8"/>
+      <stop offset="100%" stop-color="#533294"/>
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a88ae3"/>
+      <stop offset="100%" stop-color="#6841b8"/>
+    </linearGradient>
+    <linearGradient id="woodWarm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ebc48b"/>
+      <stop offset="100%" stop-color="#ba7d38"/>
+    </linearGradient>
+    <linearGradient id="walnut" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5324"/>
+      <stop offset="100%" stop-color="#512c0f"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8dc88"/>
+      <stop offset="55%" stop-color="#d49e22"/>
+      <stop offset="100%" stop-color="#8a6009"/>
+    </linearGradient>
+    <filter id="shadow" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#2c1756" flood-opacity="0.22"/>
+    </filter>
+    <filter id="itemShadow" x="-20%" y="-20%" width="140%" height="145%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#261448" flood-opacity="0.22"/>
+    </filter>
+  </defs>
+
+  <!-- Background Backdrop -->
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <circle cx="400" cy="255" r="215" fill="#7950C8" opacity="0.08"/>
+  <circle cx="400" cy="255" r="155" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Subtle Geometric Studio Lines -->
+  <path d="M90 120 L160 80 L230 120 L160 160 Z" fill="none" stroke="#c3b0ed" stroke-width="2" opacity="0.6"/>
+  <path d="M590 110 L655 75 L720 110 L655 145 Z" fill="none" stroke="#c3b0ed" stroke-width="2" opacity="0.6"/>
+
+  <!-- Main Display Pedestal -->
+  <g filter="url(#shadow)">
+    <!-- Lower Step -->
+    <rect x="95" y="425" width="610" height="86" rx="16" fill="#231c33"/>
+    <rect x="95" y="410" width="610" height="28" rx="14" fill="url(#pedestalTop)" stroke="#d5c6f5" stroke-width="1.5"/>
+    <!-- Center Raised Stage -->
+    <rect x="235" y="340" width="330" height="82" rx="14" fill="url(#pedestalSide)"/>
+    <rect x="235" y="326" width="330" height="28" rx="14" fill="url(#pedestalTop)" stroke="#c7b2f2" stroke-width="1.5"/>
+  </g>
+
+  <!-- Left Featured New Arrival: Interlocking Crystal & Wood Cube -->
+  <g transform="translate(185, 345)" filter="url(#itemShadow)">
+    <!-- Isometric Puzzle Cube -->
+    <polygon points="0,-58 52,-28 0,2 -52,-28" fill="#a88ae3" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="-52,-28 0,2 0,62 -52,32" fill="#7950C8" stroke="#ffffff" stroke-width="2"/>
+    <polygon points="0,2 52,-28 52,32 0,62" fill="#533294" stroke="#ffffff" stroke-width="2"/>
+    <!-- Cube Grid Lines -->
+    <line x1="-26" y1="-43" x2="26" y2="-13" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <line x1="26" y1="-43" x2="-26" y2="-13" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <line x1="-26" y1="-13" x2="-26" y2="47" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <line x1="26" y1="-13" x2="26" y2="47" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <line x1="-52" y1="2" x2="0" y2="32" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <line x1="0" y1="32" x2="52" y2="2" stroke="#ffffff" stroke-width="1.5" opacity="0.65"/>
+    <!-- Floating Sliding Sub-Cube -->
+    <g transform="translate(22, -48)">
+      <polygon points="0,-20 18,-10 0,0 -18,-10" fill="#f5d57a" stroke="#ffffff" stroke-width="1.5"/>
+      <polygon points="-18,-10 0,0 0,20 -18,10" fill="#e0ab36" stroke="#ffffff" stroke-width="1.5"/>
+      <polygon points="0,0 18,-10 18,10 0,20" fill="#b88414" stroke="#ffffff" stroke-width="1.5"/>
+    </g>
+  </g>
+
+  <!-- Center Hero Arrival: Mechanical Wooden Gear & Burr Sphere -->
+  <g transform="translate(400, 228)" filter="url(#itemShadow)">
+    <!-- Outer Wooden Gyro Ring -->
+    <circle cx="0" cy="0" r="96" fill="none" stroke="url(#walnut)" stroke-width="16"/>
+    <circle cx="0" cy="0" r="82" fill="none" stroke="url(#woodWarm)" stroke-width="6"/>
+    <!-- Interlocking Gear Teeth Ring -->
+    <circle cx="0" cy="0" r="64" fill="#f9f4ea" stroke="#8b5324" stroke-width="3"/>
+    <g fill="url(#woodWarm)" stroke="#704118" stroke-width="1.5">
+      <circle cx="0" cy="0" r="46" stroke-dasharray="12 6"/>
+      <rect x="-10" y="-56" width="20" height="112" rx="3"/>
+      <rect x="-56" y="-10" width="112" height="20" rx="3"/>
+      <rect x="-10" y="-56" width="20" height="112" rx="3" transform="rotate(45)"/>
+      <rect x="-10" y="-56" width="20" height="112" rx="3" transform="rotate(-45)"/>
+    </g>
+    <!-- Brass Center Core Gear -->
+    <circle cx="0" cy="0" r="24" fill="url(#brass)" stroke="#704d08" stroke-width="2"/>
+    <circle cx="0" cy="0" r="9" fill="#231c33"/>
+    <!-- Wooden Stand Base -->
+    <path d="M-46,96 L46,96 L34,76 L-34,76 Z" fill="url(#walnut)"/>
+  </g>
+
+  <!-- Right Featured New Arrival: Brass & Walnut Cryptex Puzzle Box -->
+  <g transform="translate(615, 345)" filter="url(#itemShadow)">
+    <rect x="-56" y="-24" width="112" height="72" rx="10" fill="url(#walnut)" stroke="#3d1e07" stroke-width="2"/>
+    <rect x="-46" y="-14" width="92" height="52" rx="6" fill="url(#woodWarm)" stroke="#8b5324" stroke-width="1.5"/>
+    <!-- Brass Lock Dials -->
+    <rect x="-32" y="-32" width="14" height="86" rx="4" fill="url(#brass)" stroke="#7a5308" stroke-width="1.2"/>
+    <rect x="-7" y="-32" width="14" height="86" rx="4" fill="url(#brass)" stroke="#7a5308" stroke-width="1.2"/>
+    <rect x="18" y="-32" width="14" height="86" rx="4" fill="url(#brass)" stroke="#7a5308" stroke-width="1.2"/>
+    <!-- Brass Keyhole Medallion -->
+    <circle cx="0" cy="12" r="14" fill="#231c33" stroke="#f5d57a" stroke-width="2"/>
+    <circle cx="0" cy="9" r="3.5" fill="#f5d57a"/>
+    <path d="M-2,11 L2,11 L3,20 L-3,20 Z" fill="#f5d57a"/>
+  </g>
+
+  <!-- Sparkle / Fresh Edition Accents -->
+  <g fill="#7950C8">
+    <path d="M275 110 L280 124 L294 129 L280 134 L275 148 L270 134 L256 129 L270 124 Z"/>
+    <path d="M530 135 L534 146 L545 150 L534 154 L530 165 L526 154 L515 150 L526 146 Z" fill="#9b7ad9"/>
+    <path d="M165 205 L168 213 L176 216 L168 219 L165 227 L162 219 L154 216 L162 213 Z" fill="#d49e22"/>
+  </g>
+
+  <!-- Subtle Floating Jigsaw Pieces on Pedestal Front -->
+  <g transform="translate(345, 450)" filter="url(#itemShadow)">
+    <path d="M0,0 H18 C18,-6 26,-6 26,0 H42 V18 C48,18 48,26 42,26 V42 H24 C24,36 16,36 16,42 H0 V24 C6,24 6,16 0,16 Z" fill="#9b7ad9" stroke="#ffffff" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(415, 446) rotate(12)" filter="url(#itemShadow)">
+    <path d="M0,0 H18 C18,-6 26,-6 26,0 H42 V18 C48,18 48,26 42,26 V42 H24 C24,36 16,36 16,42 H0 V24 C6,24 6,16 0,16 Z" fill="#f5b841" stroke="#ffffff" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home 2 | MindPiece Puzzle & Brain Game Store</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== COLOR SYSTEM: Black, White, Purple (#7950C8) ===== */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --purple: #7950C8;
+            --purple-light: #9b7ad9;
+            --purple-dark: #5e3b9e;
+            --gray-bg: #f7f5fc;
+            --card-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            --border-light: rgba(121, 80, 200, 0.2);
+            --nav-height: 80px;
+            --section-spacing: 100px;
+            --border-radius: 16px;
+            --border-radius-sm: 10px;
+            --transition: all 0.3s ease;
+
+            --bg-primary: var(--white);
+            --bg-secondary: var(--gray-bg);
+            --bg-card: var(--white);
+            --text-primary: var(--black);
+            --text-secondary: #3a3a3a;
+            --text-muted: #6b6b6b;
+            --accent: var(--purple);
+            --accent-light: #efeaff;
+            --border-color: #e2ddf0;
+            --shadow-color: rgba(0,0,0,0.05);
+
+            --logo-main: var(--black);
+            --logo-accent: var(--purple);
+
+            --dir: ltr;
+            --text-align: left;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1c1c1c;
+            --text-primary: #ffffff;
+            --text-secondary: #dddddd;
+            --text-muted: #a0a0a0;
+            --accent: var(--purple-light);
+            --accent-light: #2a1e3d;
+            --border-color: #2e2e2e;
+            --shadow-color: rgba(0,0,0,0.5);
+            --logo-main: var(--white);
+            --logo-accent: var(--purple-light);
+        }
+
+        [dir="rtl"] {
+            --dir: rtl;
+            --text-align: right;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Oxanium', 'Rajdhani', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            direction: var(--dir);
+            text-align: var(--text-align);
+            transition: background 0.3s, color 0.2s;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; height: auto; display: block; border-radius: var(--border-radius-sm); }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section {
+            padding: var(--section-spacing) 0;
+        }
+
+        .text-center { text-align: center; }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title span { color: var(--accent); }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.7;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            background: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            border-color: var(--accent);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(121, 80, 200, 0.25);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER & NAV ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: var(--bg-primary);
+            box-shadow: 0 5px 25px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: var(--nav-height);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--logo-main);
+        }
+
+        .logo-icon { color: var(--logo-accent); font-size: 2rem; }
+        .logo span { color: var(--logo-accent); }
+
+        .nav-main {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-item { position: relative; }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            border-radius: 30px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .nav-link i { font-size: 0.8rem; transition: var(--transition); }
+
+        .nav-link:hover, .nav-item.active .nav-link {
+            color: var(--accent);
+            background-color: var(--accent-light);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            min-width: 220px;
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius-sm);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(8px);
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            z-index: 100;
+            padding: 8px 0;
+        }
+
+        [dir="rtl"] .dropdown {
+            left: auto;
+            right: 0;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .dropdown-link:hover,
+        .dropdown-link.active {
+            background-color: var(--accent-light);
+            color: var(--accent);
+        }
+
+        .dropdown-link.active {
+            font-weight: 700;
+            box-shadow: inset 3px 0 0 var(--accent);
+        }
+
+        [dir="rtl"] .dropdown-link.active {
+            box-shadow: inset -3px 0 0 var(--accent);
+        }
+
+        .dropdown-link:hover {
+            padding-left: 24px;
+        }
+
+        [dir="rtl"] .dropdown-link:hover {
+            padding-left: 18px;
+            padding-right: 24px;
+        }
+
+        .nav-cta {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 10px 26px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-cta:hover {
+            background: transparent;
+            color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(121,80,200,0.3);
+        }
+
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+        .control-btn:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: rotate(15deg);
+        }
+
+        .mobile-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        /* ===== SECTION 1: SPLIT HERO WITH FLOATING CARDS ===== */
+        .split-hero {
+            padding-top: calc(var(--nav-height) + 60px);
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            overflow: hidden;
+        }
+
+        .split-hero-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .split-hero-content .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(121, 80, 200, 0.12);
+            color: var(--accent);
+            padding: 10px 22px;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 1.8rem;
+            border: 1px solid rgba(121, 80, 200, 0.3);
+        }
+
+        .split-hero-content h1 {
+            font-size: 3.6rem;
+            font-weight: 800;
+            line-height: 1.12;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .split-hero-content h1 span { color: var(--accent); }
+
+        .split-hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.2rem;
+            line-height: 1.8;
+            max-width: 540px;
+        }
+
+        .split-hero-buttons {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .split-hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 460px;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            transition: var(--transition);
+        }
+
+        .floating-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            border-color: var(--accent);
+            box-shadow: 0 25px 55px rgba(121,80,200,0.2);
+        }
+
+        .floating-card img {
+            border-radius: var(--border-radius-sm);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .floating-card-1 {
+            width: 280px;
+            height: 280px;
+            top: 0;
+            left: 0;
+            z-index: 3;
+        }
+
+        .floating-card-2 {
+            width: 220px;
+            height: 220px;
+            bottom: 20px;
+            right: 0;
+            z-index: 2;
+        }
+
+        .floating-card-3 {
+            width: 170px;
+            height: 170px;
+            top: 40px;
+            right: 40px;
+            z-index: 1;
+            opacity: 0.9;
+        }
+
+        /* ===== SECTION 2: HOW IT WORKS ===== */
+        .how-section {
+            background: var(--bg-secondary);
+        }
+
+        .how-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+            counter-reset: step;
+        }
+
+        .how-step {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 40px 30px;
+            border: 1px solid var(--border-color);
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .how-step:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px rgba(121,80,200,0.12);
+        }
+
+        .how-step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin: 0 auto 25px;
+            box-shadow: 0 8px 20px rgba(121,80,200,0.3);
+        }
+
+        .how-step h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .how-step p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* ===== SECTION 3: BESTSELLERS SLIDER ===== */
+        .bestsellers-section {
+            background: var(--bg-primary);
+        }
+
+        .bestsellers-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .bestseller-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+        }
+
+        .bestseller-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px rgba(121,80,200,0.15);
+        }
+
+        .bestseller-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: var(--accent-light);
+        }
+
+        .bestseller-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0;
+        }
+
+        .bestseller-card:hover .bestseller-img img {
+            transform: scale(1.07);
+        }
+
+        .bestseller-rank {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--accent);
+            color: var(--white);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .bestseller-body {
+            padding: 20px;
+        }
+
+        .bestseller-body h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .bestseller-price {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+        }
+
+        .bestseller-rating {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+        }
+
+        .bestseller-rating span {
+            color: var(--text-muted);
+            margin-left: 4px;
+        }
+
+        .bestseller-btn {
+            width: 100%;
+            padding: 10px;
+            border-radius: 30px;
+            background: var(--accent-light);
+            color: var(--accent);
+            border: 1px solid var(--border-light);
+            font-weight: 700;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .bestseller-btn:hover {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        /* ===== SECTION 4: TESTIMONIALS ===== */
+        .testimonials-section {
+            background: var(--bg-secondary);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            padding: 35px 30px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+        }
+
+        .testimonial-quote-icon {
+            color: var(--accent);
+            font-size: 2rem;
+            opacity: 0.3;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-text {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .testimonial-author img {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .testimonial-author-info h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-author-info span {
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .testimonial-stars {
+            color: var(--accent);
+            font-size: 0.85rem;
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION 5: BLOG / TIPS ===== */
+        .blog-section {
+            background: var(--bg-primary);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 35px rgba(121,80,200,0.15);
+        }
+
+        .blog-img {
+            height: 210px;
+            overflow: hidden;
+            position: relative;
+            background: var(--accent-light);
+        }
+
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            border-radius: 0;
+        }
+
+        .blog-card:hover .blog-img img {
+            transform: scale(1.06);
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: var(--accent);
+            color: var(--white);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        .blog-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-date {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .blog-body h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .blog-body p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .blog-read-more {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: var(--transition);
+        }
+
+        .blog-read-more:hover {
+            gap: 12px;
+        }
+
+        /* ===== SECTION 6: CTA ===== */
+        .cta-section {
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            color: var(--white);
+            text-align: center;
+            border-radius: var(--border-radius);
+            padding: 80px 40px;
+            margin: 0 24px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .cta-section .btn {
+            background: var(--white);
+            color: var(--purple);
+            border-color: var(--white);
+        }
+
+        .cta-section .btn:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        .cta-section .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .cta-section .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--purple);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER - WHITE BACKGROUND ===== */
+        footer {
+            background-color: var(--white);
+            color: var(--black);
+            padding: 70px 0 30px;
+            border-top: 1px solid var(--border-color);
+            margin-top: var(--section-spacing);
+        }
+
+        [data-theme="dark"] footer {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span { color: var(--purple); }
+        .footer-logo-icon { color: var(--purple); font-size: 2rem; }
+
+        .footer-column p { color: #4a4a4a; margin-bottom: 20px; }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+            color: var(--black);
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--purple);
+        }
+
+        [dir="rtl"] .footer-column h3::after { left: auto; right: 0; }
+
+        .footer-links li { margin-bottom: 12px; }
+
+        .footer-links a {
+            color: #4a4a4a;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover { color: var(--purple); padding-left: 6px; }
+
+        [dir="rtl"] .footer-links a:hover { padding-left: 0; padding-right: 6px; }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 24px;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f0ecf9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            transition: var(--transition);
+            font-size: 1.1rem;
+            border: 1px solid #e0d9f0;
+        }
+
+        .social-link:hover {
+            background: var(--purple);
+            color: var(--white);
+            transform: translateY(-5px);
+            border-color: var(--purple);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+            color: #6b6b6b;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 1024px) {
+            .nav-links {
+                position: fixed;
+                top: var(--nav-height);
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - var(--nav-height));
+                background: var(--bg-primary);
+                flex-direction: column;
+                padding: 30px 20px;
+                gap: 8px;
+                transition: var(--transition);
+                box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+                z-index: 999;
+                border-right: 1px solid var(--border-color);
+                overflow-y: auto;
+            }
+            [dir="rtl"] .nav-links {
+                left: auto;
+                right: -100%;
+                border-right: none;
+                border-left: 1px solid var(--border-color);
+            }
+            .nav-links.active { left: 0; }
+            [dir="rtl"] .nav-links.active { right: 0; left: auto; }
+
+            .nav-link { justify-content: space-between; padding: 14px 16px; }
+            .dropdown {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: var(--bg-secondary);
+                margin-top: 5px;
+                display: none;
+                width: 100%;
+            }
+            .nav-item.active .dropdown { display: block; }
+
+            .mobile-toggle { display: flex; }
+            .nav-main { gap: 15px; }
+            .nav-cta { display: none; }
+
+            .split-hero-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .split-hero-content p { margin-left: auto; margin-right: auto; }
+            .split-hero-buttons { justify-content: center; }
+            .split-hero-visual { order: -1; min-height: 380px; }
+            .split-hero-content h1 { font-size: 2.8rem; }
+        }
+
+        @media screen and (max-width: 768px) {
+            .section { padding: 70px 0; }
+            .section-title { font-size: 2.2rem; }
+            .split-hero-content h1 { font-size: 2.4rem; }
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .floating-card-1 { width: 220px; height: 220px; }
+            .floating-card-2 { width: 170px; height: 170px; }
+            .floating-card-3 { width: 130px; height: 130px; }
+            .cta-section h2 { font-size: 2.2rem; }
+        }
+
+        @media screen and (max-width: 500px) {
+            .split-hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .footer-container { grid-template-columns: 1fr; }
+            .btn { width: 100%; }
+            .cta-section { padding: 50px 24px; margin: 0 12px; }
+            .cta-section h2 { font-size: 1.8rem; }
+            .logo { font-size: 1.5rem; }
+            .floating-card-1 { width: 180px; height: 180px; }
+            .floating-card-2 { width: 140px; height: 140px; }
+            .floating-card-3 { display: none; }
+            .split-hero-visual { min-height: 300px; }
+        }
+
+        .nav-overlay {
+            display: none;
+            position: fixed;
+            top: var(--nav-height);
+            left: 0;
+            width: 100%;
+            height: calc(100vh - var(--nav-height));
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        .nav-overlay.active { display: block; opacity: 1; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <nav class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-puzzle-piece logo-icon"></i>
+                    Mind<span>Piece</span>
+                </a>
+
+                <div class="nav-main">
+                    <ul class="nav-links" id="navLinks">
+                        <li class="nav-item active">
+                            <a href="index.html" class="nav-link">Home <i class="fas fa-chevron-down"></i></a>
+                            <div class="dropdown">
+                                <a href="home-1.html" class="dropdown-link"><i class="fas fa-home"></i> Home 1</a>
+                                <a href="home-2.html" class="dropdown-link active" aria-current="page"><i class="fas fa-home"></i> Home 2</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="shop.html" class="nav-link">Shop</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="collections.html" class="nav-link">Collections</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="new-arrivals.html" class="nav-link">New Arrivals</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="about.html" class="nav-link">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                    </ul>
+
+                    <a href="shop.html" class="nav-cta">
+                        <i class="fas fa-shopping-bag"></i> Shop Puzzles
+                    </a>
+
+                    <div class="nav-controls">
+                        <button class="control-btn" id="themeToggle" title="Toggle Theme">
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <button class="control-btn" id="dirToggle" title="Toggle RTL/LTR">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+
+                    <button class="mobile-toggle" id="mobileToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="nav-overlay" id="navOverlay"></div>
+    </header>
+
+    <!-- SECTION 1: SPLIT HERO WITH FLOATING CARDS -->
+    <section class="split-hero">
+        <div class="container">
+            <div class="split-hero-grid">
+                <div class="split-hero-content">
+                    <div class="badge">
+                        <i class="fas fa-star"></i>
+                        Home 2 — The Puzzle Experience
+                    </div>
+                    <h1>Puzzles That <span>Rewire</span> Your Mind</h1>
+                    <p>From the first satisfying click to the final piece, every MindPiece puzzle is designed to give you focus, calm, and a deep sense of accomplishment. Discover a new way to play.</p>
+                    <div class="split-hero-buttons">
+                        <a href="shop.html" class="btn btn-primary"><i class="fas fa-puzzle-piece"></i> Explore Puzzles</a>
+                        <a href="about.html" class="btn btn-outline"><i class="fas fa-play-circle"></i> Our Story</a>
+                    </div>
+                </div>
+                <div class="split-hero-visual">
+                    <div class="floating-card floating-card-1">
+                        <img src="images/h5.jpg" alt="Puzzle pieces" loading="eager"
+                             onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80';">
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <img src="images/h6.jpg" alt="Brain teaser puzzle" loading="lazy">
+                    </div>
+                    <div class="floating-card floating-card-3">
+                        <img src="images/h7.jpg" alt="Chess set" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: HOW IT WORKS -->
+    <section class="section how-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">How It <span>Works</span></h2>
+                <p class="section-subtitle">Finding your perfect puzzle is simple, from browse to solve.</p>
+            </div>
+            <div class="how-steps">
+                <div class="how-step">
+                    <div class="how-step-number">1</div>
+                    <h3>Browse & Discover</h3>
+                    <p>Explore our curated collections and find puzzles that match your skill level and interests.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-number">2</div>
+                    <h3>Pick Your Challenge</h3>
+                    <p>Choose from jigsaws, 3D builds, brain teasers, and strategy games — all with detailed difficulty ratings.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-number">3</div>
+                    <h3>Fast & Safe Delivery</h3>
+                    <p>We pack every puzzle with care and ship it quickly, so your next challenge arrives ready to solve.</p>
+                </div>
+                <div class="how-step">
+                    <div class="how-step-number">4</div>
+                    <h3>Unbox & Enjoy</h3>
+                    <p>Put away the screens, take a breath, and lose yourself in the satisfying world of puzzle-solving.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: BESTSELLERS -->
+    <section class="section bestsellers-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Our Top <span>Bestsellers</span></h2>
+                <p class="section-subtitle">The puzzles our community can't stop talking about.</p>
+            </div>
+            <div class="bestsellers-track">
+                <div class="bestseller-card">
+                    <div class="bestseller-img">
+                        <img src="images/h8.webp" alt="3D Wooden Puzzle" loading="lazy">
+                        <span class="bestseller-rank">1</span>
+                    </div>
+                    <div class="bestseller-body">
+                        <h4>3D Wooden Puzzle</h4>
+                        <div class="bestseller-price">$39.99</div>
+                        <div class="bestseller-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(128)</span></div>
+                        <button class="bestseller-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-img">
+                        <img src="https://images.unsplash.com/photo-1586165368502-1bad197a6461?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="1000-Piece Jigsaw" loading="lazy">
+                        <span class="bestseller-rank">2</span>
+                    </div>
+                    <div class="bestseller-body">
+                        <h4>1000-Piece Jigsaw</h4>
+                        <div class="bestseller-price">$24.99</div>
+                        <div class="bestseller-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> <span>(94)</span></div>
+                        <button class="bestseller-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-img">
+                        <img src="images/h9.jpg" alt="Metal Brain Teaser" loading="lazy">
+                        <span class="bestseller-rank">3</span>
+                    </div>
+                    <div class="bestseller-body">
+                        <h4>Metal Brain Teaser</h4>
+                        <div class="bestseller-price">$18.50</div>
+                        <div class="bestseller-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(211)</span></div>
+                        <button class="bestseller-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+                <div class="bestseller-card">
+                    <div class="bestseller-img">
+                        <img src="images/h10.jpg" alt="Wooden Chess Set" loading="lazy">
+                        <span class="bestseller-rank">4</span>
+                    </div>
+                    <div class="bestseller-body">
+                        <h4>Wooden Chess Set</h4>
+                        <div class="bestseller-price">$89.99</div>
+                        <div class="bestseller-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> <span>(67)</span></div>
+                        <button class="bestseller-btn"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: TESTIMONIALS -->
+    <section class="section testimonials-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Loved by <span>Puzzlers</span></h2>
+                <p class="section-subtitle">Real words from real customers who found their perfect puzzle.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"The quality of the wooden puzzles is unreal. I've bought three already and each one has been a joy to build. The pieces fit perfectly and the designs are stunning."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Sarah M." loading="lazy">
+                        <div class="testimonial-author-info">
+                            <h4>Sarah M.</h4>
+                            <span>Verified Buyer</span>
+                            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"I bought the metal brain teasers as a gift and ended up keeping them for myself. They're addictive in the best way. Shipping was fast and the packaging was beautiful."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="James R." loading="lazy">
+                        <div class="testimonial-author-info">
+                            <h4>James R.</h4>
+                            <span>Verified Buyer</span>
+                            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="testimonial-text">"MindPiece has become my go-to for gifts. The collections are thoughtfully curated and there's always something new. My kids love the 3D puzzles especially."</p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Emily P." loading="lazy">
+                        <div class="testimonial-author-info">
+                            <h4>Emily P.</h4>
+                            <span>Verified Buyer</span>
+                            <div class="testimonial-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: BLOG / TIPS -->
+    <section class="section blog-section">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Puzzle Tips & <span>Stories</span></h2>
+                <p class="section-subtitle">Guides, inspiration, and stories from the world of puzzling.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="images/h11.webp" alt="Puzzle tips" loading="lazy">
+                        <span class="blog-category">Tips</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date"><i class="fas fa-calendar"></i> March 12, 2025</div>
+                        <h3>5 Tips to Solve Any Jigsaw Faster</h3>
+                        <p>Master the art of jigsaw puzzling with these proven strategies — from sorting edges to color grouping.</p>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1526406915894-7bcd65f60845?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Brain health" loading="lazy">
+                        <span class="blog-category">Wellness</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date"><i class="fas fa-calendar"></i> March 5, 2025</div>
+                        <h3>Why Puzzles Are the Best Brain Workout</h3>
+                        <p>New research shows that regular puzzle-solving improves memory, focus, and even mood. Here's how.</p>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1610563166150-b34df4f3bcd6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Puzzle gift guide" loading="lazy">
+                        <span class="blog-category">Gifting</span>
+                    </div>
+                    <div class="blog-body">
+                        <div class="blog-date"><i class="fas fa-calendar"></i> Feb 28, 2025</div>
+                        <h3>The Ultimate Puzzle Gift Guide</h3>
+                        <p>Not sure which puzzle to gift? Our guide breaks it down by age, skill level, and personality.</p>
+                        <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 6: CTA -->
+    <section class="section" style="padding-top: 0;">
+        <div class="cta-section">
+            <h2>Start Your Puzzle Journey Today</h2>
+            <p>There's a perfect puzzle waiting for every mind. Explore our collection and find yours.</p>
+            <div class="cta-buttons">
+                <a href="shop.html" class="btn btn-primary"><i class="fas fa-shopping-bag"></i> Shop All Puzzles</a>
+                <a href="collections.html" class="btn btn-outline-light"><i class="fas fa-layer-group"></i> Browse Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER - WHITE BACKGROUND -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="index.html" class="footer-logo">
+                        <i class="fas fa-puzzle-piece footer-logo-icon"></i>
+                        Mind<span>Piece</span>
+                    </a>
+                    <p>Curating the world's finest puzzles and brain games to inspire and challenge.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-pinterest"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="shop.html"><i class="fas fa-chevron-right"></i> Shop All</a></li>
+                        <li><a href="new-arrivals.html"><i class="fas fa-chevron-right"></i> New Arrivals</a></li>
+                        <li><a href="collections.html"><i class="fas fa-chevron-right"></i> Collections</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Help</h3>
+                    <ul class="footer-links">
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Shipping & Returns</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-map-marker-alt"></i> 123 Puzzle Lane</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> +1 (800) 555-MIND</a></li>
+                        <li><a href="#"><i class="fas fa-envelope"></i> hello@mindpiece.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; <span id="currentYear">2025</span> MindPiece Puzzle & Brain Game Store. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const dirToggle = document.getElementById('dirToggle');
+        const mobileToggle = document.getElementById('mobileToggle');
+        const navLinks = document.getElementById('navLinks');
+        const navOverlay = document.getElementById('navOverlay');
+        const body = document.body;
+        const themeIcon = themeToggle.querySelector('i');
+        const dirIcon = dirToggle.querySelector('i');
+
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            body.setAttribute('data-theme', savedTheme);
+            themeIcon.className = savedTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+        themeToggle.addEventListener('click', () => {
+            const current = body.getAttribute('data-theme');
+            const next = current === 'light' ? 'dark' : 'light';
+            body.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            themeIcon.className = next === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+        });
+
+        function initDirection() {
+            const savedDir = localStorage.getItem('direction') || 'ltr';
+            body.setAttribute('dir', savedDir);
+            updateDirIcon(savedDir);
+        }
+        function updateDirIcon(dir) {
+            dirIcon.style.transform = dir === 'rtl' ? 'scaleX(-1)' : 'scaleX(1)';
+        }
+        dirToggle.addEventListener('click', () => {
+            const current = body.getAttribute('dir');
+            const next = current === 'ltr' ? 'rtl' : 'ltr';
+            body.setAttribute('dir', next);
+            localStorage.setItem('direction', next);
+            updateDirIcon(next);
+        });
+
+        function toggleMobileMenu() {
+            navLinks.classList.toggle('active');
+            navOverlay.classList.toggle('active');
+            const icon = mobileToggle.querySelector('i');
+            icon.className = navLinks.classList.contains('active') ? 'fas fa-times' : 'fas fa-bars';
+            body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        }
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+        navOverlay.addEventListener('click', toggleMobileMenu);
+
+        document.querySelectorAll('.nav-item').forEach(item => {
+            const link = item.querySelector('.nav-link');
+            const dropdown = item.querySelector('.dropdown');
+            if (dropdown) {
+                link.addEventListener('click', (e) => {
+                    if (window.innerWidth <= 1024) {
+                        e.preventDefault();
+                        document.querySelectorAll('.nav-item').forEach(other => {
+                            if (other !== item) other.classList.remove('active');
+                        });
+                        item.classList.toggle('active');
+                    }
+                });
+            }
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            if (!link.closest('.nav-item').querySelector('.dropdown')) {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 1024) toggleMobileMenu();
+                });
+            }
+        });
+        document.querySelectorAll('.dropdown-link').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) toggleMobileMenu();
+            });
+        });
+
+        // Add to cart buttons
+        document.querySelectorAll('.bestseller-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const title = this.closest('.bestseller-card').querySelector('h4').textContent.trim();
+                alert(`"${title}" added to your cart!`);
+            });
+        });
+
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        initTheme();
+        initDirection();
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                body.style.overflow = '';
+                mobileToggle.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    </script>
+</body>
+</html>

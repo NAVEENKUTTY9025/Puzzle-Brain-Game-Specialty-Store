@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 — Page Not Found | MindPiece</title>
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="shortcut icon" href="images/favicon.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== COLOR SYSTEM: Black, White, Purple (#7950C8) ===== */
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+            --purple: #7950C8;
+            --purple-light: #9b7ad9;
+            --purple-dark: #5e3b9e;
+            --gray-bg: #f7f5fc;
+            --text-secondary: #3a3a3a;
+            --text-muted: #6b6b6b;
+            --accent: var(--purple);
+            --accent-light: #efeaff;
+            --border-color: #e2ddf0;
+        }
+
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* NO SCROLL */
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Oxanium', 'Rajdhani', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #ffffff 0%, #f7f5fc 100%);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        /* Decorative background circles */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -180px;
+            right: -180px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: rgba(121, 80, 200, 0.08);
+            z-index: 0;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            bottom: -200px;
+            left: -200px;
+            width: 560px;
+            height: 560px;
+            border-radius: 50%;
+            background: rgba(121, 80, 200, 0.06);
+            z-index: 0;
+        }
+
+        /* ===== LOGO — TOP LEFT CORNER ===== */
+        .error-logo {
+            position: fixed;
+            top: 24px;
+            left: 28px;
+            z-index: 10;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--black);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-logo:hover {
+            opacity: 0.8;
+        }
+
+        .error-logo i {
+            color: var(--purple);
+            font-size: 1.8rem;
+        }
+
+        .error-logo span {
+            color: var(--purple);
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .error-container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 40px 24px;
+            max-width: 720px;
+            width: 100%;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== 404 NUMBER ===== */
+        .error-code {
+            font-size: 9rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -8px;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        /* ===== HEADING ===== */
+        .error-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--black);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .error-title span {
+            color: var(--purple);
+        }
+
+        /* ===== DESCRIPTION ===== */
+        .error-desc {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 520px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* ===== BUTTONS ===== */
+        .error-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px 34px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            white-space: nowrap;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background-color: var(--purple);
+            color: var(--white);
+            border-color: var(--purple);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--purple);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(121, 80, 200, 0.25);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--purple);
+            border: 2px solid var(--purple);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--purple);
+            color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(121, 80, 200, 0.25);
+        }
+
+        /* ===== FLOATING PUZZLE DECORATION ===== */
+        .floating-puzzle {
+            position: absolute;
+            font-size: 2.5rem;
+            color: var(--purple);
+            opacity: 0.15;
+            z-index: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .puzzle-1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .puzzle-2 {
+            top: 70%;
+            right: 12%;
+            font-size: 3rem;
+            animation-delay: 1.5s;
+        }
+
+        .puzzle-3 {
+            bottom: 15%;
+            left: 18%;
+            font-size: 2rem;
+            animation-delay: 3s;
+        }
+
+        .puzzle-4 {
+            top: 25%;
+            right: 18%;
+            font-size: 2.2rem;
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-18px) rotate(8deg); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 600px) {
+            .error-logo {
+                top: 18px;
+                left: 20px;
+                font-size: 1.3rem;
+            }
+            .error-logo i {
+                font-size: 1.5rem;
+            }
+            .error-code {
+                font-size: 6rem;
+                letter-spacing: -5px;
+            }
+            .error-title {
+                font-size: 1.5rem;
+            }
+            .error-desc {
+                font-size: 0.95rem;
+                padding: 0 10px;
+            }
+            .btn {
+                padding: 13px 26px;
+                font-size: 0.85rem;
+                width: 100%;
+                max-width: 260px;
+            }
+            .floating-puzzle {
+                display: none;
+            }
+        }
+
+        @media screen and (max-height: 600px) {
+            .error-code {
+                font-size: 5rem;
+            }
+            .error-desc {
+                margin-bottom: 25px;
+            }
+            .error-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Logo — Top Left Corner -->
+    <a href="home-1.html" class="error-logo">
+        <i class="fas fa-puzzle-piece"></i>
+        Mind<span>Piece</span>
+    </a>
+
+    <!-- Floating decorative puzzle icons -->
+    <i class="fas fa-puzzle-piece floating-puzzle puzzle-1"></i>
+    <i class="fas fa-puzzle-piece floating-puzzle puzzle-2"></i>
+    <i class="fas fa-brain floating-puzzle puzzle-3"></i>
+    <i class="fas fa-cube floating-puzzle puzzle-4"></i>
+
+    <div class="error-container">
+        <!-- 404 Number -->
+        <div class="error-code">404</div>
+
+        <!-- Heading -->
+        <h1 class="error-title">Oops! This Piece Is <span>Missing</span></h1>
+
+        <!-- Description -->
+        <p class="error-desc">
+            The page you're looking for seems to have wandered off the puzzle board. 
+            Don't worry — every missing piece leads to a new discovery.
+        </p>
+
+        <!-- Buttons -->
+        <div class="error-actions">
+            <a href="index.html" class="btn btn-primary">
+                <i class="fas fa-home"></i> Back to Home
+            </a>
+            <a href="shop.html" class="btn btn-outline">
+                <i class="fas fa-shopping-bag"></i> Shop Puzzles
+            </a>
+        </div>
+    </div>
+</body>
+</html>

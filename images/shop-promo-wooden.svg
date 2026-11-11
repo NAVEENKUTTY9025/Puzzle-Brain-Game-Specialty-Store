@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <radialGradient id="woodStage" cx="50%" cy="40%" r="72%">
+      <stop offset="0%" stop-color="#2b221e"/>
+      <stop offset="65%" stop-color="#171210"/>
+      <stop offset="100%" stop-color="#0d0a09"/>
+    </radialGradient>
+    <linearGradient id="walnutDark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7c4c28"/>
+      <stop offset="100%" stop-color="#452610"/>
+    </linearGradient>
+    <linearGradient id="cherryMid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c4804a"/>
+      <stop offset="100%" stop-color="#8b4d22"/>
+    </linearGradient>
+    <linearGradient id="mapleBright" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f2d6a9"/>
+      <stop offset="100%" stop-color="#c79b5c"/>
+    </linearGradient>
+    <filter id="woodDrop" x="-20%" y="-20%" width="145%" height="145%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#000000" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Dark Slate / Studio Backdrop -->
+  <rect width="800" height="600" fill="url(#woodStage)"/>
+  <ellipse cx="400" cy="345" rx="345" ry="62" fill="#231c1a" stroke="#7950C8" stroke-opacity="0.2" stroke-width="2"/>
+
+  <!-- Geometric Faceted Wooden Polyhedron (Back-Left) -->
+  <g transform="translate(215, 190)" filter="url(#woodDrop)">
+    <polygon points="0,-78 68,-38 68,38 0,78 -68,38 -68,-38" fill="url(#walnutDark)" stroke="#2b1607" stroke-width="2"/>
+    <polygon points="0,-78 68,-38 0,0" fill="url(#cherryMid)" stroke="#2b1607" stroke-width="1.5"/>
+    <polygon points="0,-78 -68,-38 0,0" fill="#a26635" stroke="#2b1607" stroke-width="1.5"/>
+    <polygon points="68,-38 68,38 0,0" fill="#5e3619" stroke="#2b1607" stroke-width="1.5"/>
+    <polygon points="-68,-38 -68,38 0,0" fill="url(#walnutDark)" stroke="#2b1607" stroke-width="1.5"/>
+    <polygon points="-68,38 0,78 0,0" fill="#3a200d" stroke="#2b1607" stroke-width="1.5"/>
+    <polygon points="68,38 0,78 0,0" fill="#4f2d14" stroke="#2b1607" stroke-width="1.5"/>
+  </g>
+
+  <!-- Interlocking Walnut & Maple Burr Cross (Center-Front Focal) -->
+  <g transform="translate(385, 250)" filter="url(#woodDrop)">
+    <!-- Back depth blocks -->
+    <rect x="-74" y="-26" width="148" height="52" rx="6" fill="url(#walnutDark)" stroke="#2b1607" stroke-width="2"/>
+    <rect x="-26" y="-74" width="52" height="148" rx="6" fill="url(#mapleBright)" stroke="#6d4222" stroke-width="2"/>
+    <!-- Center interlocking cross -->
+    <rect x="-26" y="-26" width="52" height="52" rx="4" fill="url(#cherryMid)" stroke="#2b1607" stroke-width="2"/>
+    <rect x="-56" y="-12" width="112" height="24" rx="4" fill="url(#mapleBright)" stroke="#6d4222" stroke-width="1.8"/>
+    <rect x="-12" y="-56" width="24" height="112" rx="4" fill="url(#walnutDark)" stroke="#2b1607" stroke-width="1.8"/>
+    <rect x="-12" y="-12" width="24" height="24" fill="url(#cherryMid)" stroke="#2b1607" stroke-width="1.5"/>
+  </g>
+
+  <!-- Cherry Wood Dovetail Puzzle Box (Right) -->
+  <g transform="translate(565, 225)" filter="url(#woodDrop)">
+    <!-- Top Lid -->
+    <polygon points="0,-54 92,-16 0,22 -92,-16" fill="url(#mapleBright)" stroke="#5e3619" stroke-width="2"/>
+    <!-- Left Side -->
+    <polygon points="-92,-16 0,22 0,98 -92,60" fill="url(#cherryMid)" stroke="#452610" stroke-width="2"/>
+    <!-- Right Side with Dovetail Joint Tabs -->
+    <polygon points="92,-16 0,22 0,98 92,60" fill="url(#walnutDark)" stroke="#2b1607" stroke-width="2"/>
+    <!-- Dovetail Pins -->
+    <polygon points="0,34 16,28 16,44 0,50" fill="url(#cherryMid)" stroke="#2b1607" stroke-width="1.2"/>
+    <polygon points="0,62 16,56 16,72 0,78" fill="url(#cherryMid)" stroke="#2b1607" stroke-width="1.2"/>
+    <!-- Sliding lid groove -->
+    <line x1="-80" y1="-10" x2="-4" y2="19" stroke="#5e3619" stroke-width="2" opacity="0.6"/>
+  </g>
+</svg>

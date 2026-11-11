@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">David Kim — Operations Lead</title>
+  <desc>Editorial studio portrait illustration of David Kim wearing rectangular glasses, a charcoal crewneck sweater over a white collar, with parcel badge accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f1f2f9"/>
+      <stop offset="55%" stop-color="#dfe1f2"/>
+      <stop offset="100%" stop-color="#c9c6e8"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5d1b5"/>
+      <stop offset="100%" stop-color="#e3b18d"/>
+    </linearGradient>
+    <linearGradient id="sweater" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#353147"/>
+      <stop offset="100%" stop-color="#1b1826"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#22193d" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="600" height="520" fill="url(#bg)"/>
+  <circle cx="300" cy="235" r="190" fill="#ffffff" opacity="0.5"/>
+  <!-- Faint Craft Box Geometric Accent -->
+  <g transform="translate(470, 120)" stroke="#7950C8" stroke-width="2.2" fill="none" opacity="0.25">
+    <rect x="-26" y="-22" width="52" height="44" rx="6"/>
+    <line x1="-26" y1="-4" x2="26" y2="-4"/>
+    <line x1="0" y1="-22" x2="0" y2="-4"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <!-- Sweater & Shirt Collar -->
+    <path d="M114,520 C124,392 192,352 256,344 H344 C408,352 476,392 486,520 Z" fill="url(#sweater)"/>
+    <path d="M254,344 C272,374 328,374 346,344 L334,332 H266 Z" fill="#ffffff"/>
+    <polygon points="262,340 288,372 268,376" fill="#f7f5fc"/>
+    <polygon points="338,340 312,372 332,376" fill="#f7f5fc"/>
+    <!-- Subtle Purple Patch Detail -->
+    <rect x="355" y="425" width="38" height="26" rx="5" fill="#7950C8"/>
+    <rect x="369" y="425" width="10" height="26" fill="#c7b2f2"/>
+
+    <!-- Neck -->
+    <rect x="272" y="274" width="56" height="56" rx="18" fill="#dba681"/>
+
+    <!-- Ears -->
+    <ellipse cx="220" cy="208" rx="10" ry="18" fill="#e5b490"/>
+    <ellipse cx="380" cy="208" rx="10" ry="18" fill="#e5b490"/>
+
+    <!-- Head -->
+    <path d="M224,178 C224,122 256,100 300,100 C344,100 376,122 376,178 C376,240 346,294 300,294 C254,294 224,240 224,178 Z" fill="url(#skin)"/>
+
+    <!-- Side-parted Dark Hair -->
+    <path d="M218,184 C214,114 252,78 308,78 C358,78 386,118 382,184 C372,140 346,124 316,126 C282,128 242,144 218,184 Z" fill="#181524"/>
+
+    <!-- Brows & Eyes -->
+    <path d="M248,176 Q266,170 282,176" fill="none" stroke="#181524" stroke-width="4.2" stroke-linecap="round"/>
+    <path d="M318,176 Q334,170 352,176" fill="none" stroke="#181524" stroke-width="4.2" stroke-linecap="round"/>
+    <ellipse cx="266" cy="198" rx="8" ry="6" fill="#181524"/>
+    <ellipse cx="334" cy="198" rx="8" ry="6" fill="#181524"/>
+    <circle cx="268" cy="196" r="2.2" fill="#ffffff"/>
+    <circle cx="336" cy="196" r="2.2" fill="#ffffff"/>
+
+    <!-- Rectangular Glasses -->
+    <rect x="238" y="182" width="52" height="34" rx="8" fill="#ffffff" fill-opacity="0.12" stroke="#1f1b2e" stroke-width="3.6"/>
+    <rect x="310" y="182" width="52" height="34" rx="8" fill="#ffffff" fill-opacity="0.12" stroke="#1f1b2e" stroke-width="3.6"/>
+    <line x1="290" y1="196" x2="310" y2="196" stroke="#1f1b2e" stroke-width="3.6"/>
+
+    <!-- Nose & Calm Smile -->
+    <path d="M300,202 L296,228 L305,231" fill="none" stroke="#c8926d" stroke-width="2.6" stroke-linecap="round"/>
+    <path d="M278,252 Q300,266 322,252" fill="none" stroke="#945047" stroke-width="3.8" stroke-linecap="round"/>
+  </g>
+</svg>

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">Sarah Chen — Founder and CEO</title>
+  <desc>Editorial studio portrait illustration of Sarah Chen wearing round glasses and a plum blazer with a subtle puzzle pin.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4effd"/>
+      <stop offset="55%" stop-color="#e3d5fb"/>
+      <stop offset="100%" stop-color="#cbb4f5"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f9d8be"/>
+      <stop offset="100%" stop-color="#ebbc99"/>
+    </linearGradient>
+    <linearGradient id="blazer" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7950C8"/>
+      <stop offset="100%" stop-color="#4e2e8e"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#361c66" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+
+  <!-- Studio Backdrop -->
+  <rect width="600" height="520" fill="url(#bg)"/>
+  <circle cx="300" cy="240" r="190" fill="#ffffff" opacity="0.45"/>
+  <!-- Faint Watermark Puzzle Piece -->
+  <path d="M445,75 H490 C490,62 508,62 508,75 H545 V118 C558,118 558,136 545,136 V175 H500 C500,162 482,162 482,175 H445 V130 C458,130 458,112 445,112 Z" fill="#7950C8" opacity="0.12" transform="rotate(14 495 125)"/>
+
+  <!-- Portrait Bust -->
+  <g filter="url(#soft)">
+    <!-- Back Hair -->
+    <path d="M196,210 C196,112 248,78 300,78 C352,78 404,112 404,210 L414,342 C386,356 214,356 186,342 Z" fill="#1e1829"/>
+
+    <!-- Tailored Blazer & Cream Turtleneck -->
+    <path d="M122,520 C130,395 194,352 256,346 H344 C406,352 470,395 478,520 Z" fill="url(#blazer)"/>
+    <path d="M242,348 L300,458 L358,348 Z" fill="#fdfaf6"/>
+    <rect x="268" y="314" width="64" height="44" rx="14" fill="#f3ede4"/>
+    <!-- Blazer Lapels -->
+    <path d="M254,346 L216,422 L272,468 L280,418 Z" fill="#5b37a3"/>
+    <path d="M346,346 L384,422 L328,468 L320,418 Z" fill="#5b37a3"/>
+    <!-- Gold Puzzle Lapel Pin -->
+    <path d="M228,412 H242 C242,408 247,408 247,412 H256 V425 H242 C242,429 237,429 237,425 H228 Z" fill="#f5c95b"/>
+
+    <!-- Neck -->
+    <rect x="275" y="274" width="50" height="52" rx="18" fill="#e5b08a"/>
+
+    <!-- Face -->
+    <path d="M226,184 C226,130 258,108 300,108 C342,108 374,130 374,184 C374,242 346,294 300,294 C254,294 226,242 226,184 Z" fill="url(#skin)"/>
+    <!-- Ears & Small Pearl Earrings -->
+    <ellipse cx="222" cy="212" rx="10" ry="18" fill="#ebb996"/>
+    <ellipse cx="378" cy="212" rx="10" ry="18" fill="#ebb996"/>
+    <circle cx="222" cy="230" r="5" fill="#fffdf8"/>
+    <circle cx="378" cy="230" r="5" fill="#fffdf8"/>
+
+    <!-- Soft Cheeks & Facial Features -->
+    <ellipse cx="256" cy="230" rx="16" ry="8" fill="#f09b88" opacity="0.28"/>
+    <ellipse cx="344" cy="230" rx="16" ry="8" fill="#f09b88" opacity="0.28"/>
+    <!-- Brows -->
+    <path d="M248,184 Q266,177 282,184" fill="none" stroke="#1e1829" stroke-width="4" stroke-linecap="round"/>
+    <path d="M318,184 Q334,177 352,184" fill="none" stroke="#1e1829" stroke-width="4" stroke-linecap="round"/>
+    <!-- Eyes -->
+    <ellipse cx="266" cy="204" rx="8" ry="6.5" fill="#1e1829"/>
+    <ellipse cx="334" cy="204" rx="8" ry="6.5" fill="#1e1829"/>
+    <circle cx="268" cy="202" r="2.2" fill="#ffffff"/>
+    <circle cx="336" cy="202" r="2.2" fill="#ffffff"/>
+    <!-- Round Gold-Rim Glasses -->
+    <circle cx="266" cy="205" r="24" fill="#ffffff" fill-opacity="0.14" stroke="#c89a3c" stroke-width="3.2"/>
+    <circle cx="334" cy="205" r="24" fill="#ffffff" fill-opacity="0.14" stroke="#c89a3c" stroke-width="3.2"/>
+    <path d="M290,204 Q300,199 310,204" fill="none" stroke="#c89a3c" stroke-width="3"/>
+    <!-- Nose & Warm Smile -->
+    <path d="M300,206 L296,232 L305,235" fill="none" stroke="#cf9873" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M278,254 Q300,270 322,254" fill="none" stroke="#a6524b" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Front Sweeping Hair -->
+    <path d="M214,194 C216,120 264,92 316,94 C368,96 390,136 388,200 C372,158 342,136 312,132 C280,148 242,162 214,194 Z" fill="#1e1829"/>
+  </g>
+</svg>

@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bgStudio" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f7f5fc"/>
+      <stop offset="68%" stop-color="#ede8f8"/>
+      <stop offset="100%" stop-color="#dfd7f0"/>
+    </linearGradient>
+    <linearGradient id="birchWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#e8c89b"/>
+      <stop offset="45%" stop-color="#d4a76a"/>
+      <stop offset="100%" stop-color="#b78343"/>
+    </linearGradient>
+    <linearGradient id="walnutWood" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8b5a34"/>
+      <stop offset="50%" stop-color="#6d4222"/>
+      <stop offset="100%" stop-color="#4b2c15"/>
+    </linearGradient>
+    <linearGradient id="mapleWood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f3dbb4"/>
+      <stop offset="100%" stop-color="#cfa266"/>
+    </linearGradient>
+    <linearGradient id="brassPin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="50%" stop-color="#d97706"/>
+      <stop offset="100%" stop-color="#92400e"/>
+    </linearGradient>
+    <filter id="kitShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#2a1e3d" flood-opacity="0.22"/>
+    </filter>
+    <filter id="gearShadow" x="-15%" y="-15%" width="135%" height="135%">
+      <feDropShadow dx="3" dy="6" stdDeviation="4" flood-color="#2a1e3d" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- Studio Surface -->
+  <rect width="800" height="600" fill="url(#bgStudio)"/>
+  <ellipse cx="400" cy="495" rx="290" ry="38" fill="#5e3b9e" opacity="0.14"/>
+
+  <!-- Wooden Base Frame Stand -->
+  <g filter="url(#kitShadow)">
+    <rect x="135" y="445" width="530" height="44" rx="8" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="2"/>
+    <rect x="155" y="432" width="490" height="18" rx="4" fill="url(#birchWood)" stroke="#7c5228" stroke-width="1.5"/>
+    <!-- Left & Right vertical frame struts -->
+    <rect x="178" y="130" width="26" height="312" rx="5" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="1.5"/>
+    <rect x="596" y="130" width="26" height="312" rx="5" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="1.5"/>
+    <rect x="166" y="118" width="468" height="22" rx="6" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="1.5"/>
+    <!-- Decorative purple accent trim -->
+    <rect x="200" y="126" width="400" height="5" rx="2.5" fill="#7950C8" opacity="0.7"/>
+  </g>
+
+  <!-- Back Wooden Crossbeam -->
+  <rect x="195" y="255" width="410" height="22" rx="4" fill="url(#birchWood)" stroke="#8c5f2d" stroke-width="1.5"/>
+
+  <!-- Large Main Birch Gear (center-left) -->
+  <g transform="translate(320, 278)" filter="url(#gearShadow)">
+    <g fill="url(#birchWood)" stroke="#6d4222" stroke-width="2.5">
+      <!-- 16 Gear Teeth -->
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(0)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(22.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(45)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(67.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(90)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(112.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(135)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(157.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(180)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(202.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(225)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(247.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(270)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(292.5)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(315)"/>
+      <rect x="-12" y="-134" width="24" height="24" rx="3" transform="rotate(337.5)"/>
+      <circle cx="0" cy="0" r="114"/>
+    </g>
+    <!-- Laser-cut hollow spokes -->
+    <g fill="#ece5f9" stroke="#6d4222" stroke-width="2">
+      <path d="M 14 -32 L 32 -88 A 94 94 0 0 1 88 -32 L 32 -14 Z"/>
+      <path d="M 32 14 L 88 32 A 94 94 0 0 1 32 88 L 14 32 Z"/>
+      <path d="M -14 32 L -32 88 A 94 94 0 0 1 -88 32 L -32 14 Z"/>
+      <path d="M -32 -14 L -88 -32 A 94 94 0 0 1 -32 -88 L -14 -32 Z"/>
+    </g>
+    <circle cx="0" cy="0" r="34" fill="url(#walnutWood)" stroke="#4b2c15" stroke-width="2"/>
+    <circle cx="0" cy="0" r="11" fill="url(#brassPin)" stroke="#78350f" stroke-width="1.5"/>
+  </g>
+
+  <!-- Medium Walnut Gear (upper-right meshing) -->
+  <g transform="translate(486, 206) rotate(11)" filter="url(#gearShadow)">
+    <g fill="url(#walnutWood)" stroke="#3b200d" stroke-width="2.2">
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(0)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(30)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(60)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(90)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(120)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(150)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(180)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(210)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(240)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(270)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(300)"/>
+      <rect x="-10" y="-88" width="20" height="20" rx="2.5" transform="rotate(330)"/>
+      <circle cx="0" cy="0" r="72"/>
+    </g>
+    <g fill="#ede8f8" stroke="#3b200d" stroke-width="1.8">
+      <circle cx="0" cy="-39" r="14"/>
+      <circle cx="34" cy="20" r="14"/>
+      <circle cx="-34" cy="20" r="14"/>
+    </g>
+    <circle cx="0" cy="0" r="20" fill="url(#mapleWood)" stroke="#6d4222" stroke-width="2"/>
+    <circle cx="0" cy="0" r="8" fill="url(#brassPin)"/>
+  </g>
+
+  <!-- Lower-Right Maple Escapement Gear -->
+  <g transform="translate(505, 355) rotate(18)" filter="url(#gearShadow)">
+    <g fill="url(#mapleWood)" stroke="#7c5228" stroke-width="2.2">
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(0)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(36)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(72)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(108)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(144)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(180)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(216)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(252)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(288)"/>
+      <rect x="-9" y="-70" width="18" height="18" rx="2" transform="rotate(324)"/>
+      <circle cx="0" cy="0" r="56"/>
+    </g>
+    <circle cx="0" cy="0" r="28" fill="#ede8f8" stroke="#7c5228" stroke-width="2"/>
+    <circle cx="0" cy="0" r="16" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="6" fill="url(#brassPin)"/>
+  </g>
+
+  <!-- Mechanical Connecting Rod / Crank Arm -->
+  <g filter="url(#gearShadow)">
+    <path d="M 320 278 L 505 355" stroke="#5c3518" stroke-width="20" stroke-linecap="round"/>
+    <path d="M 320 278 L 505 355" stroke="url(#mapleWood)" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="320" cy="278" r="7" fill="url(#brassPin)"/>
+    <circle cx="505" cy="355" r="7" fill="url(#brassPin)"/>
+  </g>
+
+  <!-- Loose Spare Wooden Gear & Dowels in Foreground -->
+  <g transform="translate(225, 495)" filter="url(#gearShadow)">
+    <ellipse cx="0" cy="14" rx="52" ry="14" fill="url(#birchWood)" stroke="#6d4222" stroke-width="2"/>
+    <ellipse cx="0" cy="6" rx="52" ry="14" fill="url(#mapleWood)" stroke="#6d4222" stroke-width="2"/>
+    <ellipse cx="0" cy="6" rx="18" ry="5" fill="#dfd7f0" stroke="#6d4222" stroke-width="1.5"/>
+  </g>
+  <g transform="translate(575, 505) rotate(-14)" filter="url(#gearShadow)">
+    <rect x="-42" y="-7" width="84" height="14" rx="7" fill="url(#walnutWood)" stroke="#3b200d" stroke-width="1.5"/>
+  </g>
+</svg>

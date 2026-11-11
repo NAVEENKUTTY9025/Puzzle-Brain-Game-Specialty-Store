@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 520" width="600" height="520" role="img" aria-labelledby="title desc">
+  <title id="title">Marcus Rivera — Head of Curation</title>
+  <desc>Editorial studio portrait illustration of Marcus Rivera wearing a slate overshirt with a tiny wooden burr puzzle icon.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2c2246"/>
+      <stop offset="55%" stop-color="#1f1833"/>
+      <stop offset="100%" stop-color="#130e21"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e3ad86"/>
+      <stop offset="100%" stop-color="#c98e64"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4e587a"/>
+      <stop offset="100%" stop-color="#2b3147"/>
+    </linearGradient>
+    <filter id="soft" x="-15%" y="-15%" width="130%" height="135%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#080412" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+
+  <!-- Rich Studio Backdrop -->
+  <rect width="600" height="520" fill="url(#bg)"/>
+  <circle cx="300" cy="230" r="195" fill="#7950C8" opacity="0.18"/>
+  <!-- Faint Geometric Cube Blueprint -->
+  <g transform="translate(105, 105)" stroke="#9b7ad9" stroke-width="2" fill="none" opacity="0.28">
+    <polygon points="0,-32 28,-16 28,16 0,32 -28,16 -28,-16"/>
+    <polyline points="-28,-16 0,0 28,-16"/>
+    <line x1="0" y1="0" x2="0" y2="32"/>
+  </g>
+
+  <g filter="url(#soft)">
+    <!-- Shoulders / Overshirt & Crisp Tee -->
+    <path d="M112,520 C122,390 190,350 255,342 H345 C410,350 478,390 488,520 Z" fill="url(#shirt)"/>
+    <path d="M242,344 C264,378 336,378 358,344 L344,332 H256 Z" fill="#f7f5fc"/>
+    <line x1="300" y1="366" x2="300" y2="520" stroke="#1e2233" stroke-width="3"/>
+    <!-- Pocket Square Puzzle Emblem -->
+    <g transform="translate(362, 430)">
+      <rect x="-18" y="-8" width="36" height="16" rx="4" fill="#d9a45b"/>
+      <rect x="-8" y="-18" width="16" height="36" rx="4" fill="#e8ba78"/>
+    </g>
+
+    <!-- Neck -->
+    <rect x="272" y="274" width="56" height="62" rx="18" fill="#bf8259"/>
+
+    <!-- Ears -->
+    <ellipse cx="218" cy="206" rx="11" ry="20" fill="#cf956c"/>
+    <ellipse cx="382" cy="206" rx="11" ry="20" fill="#cf956c"/>
+
+    <!-- Head -->
+    <path d="M222,174 C222,118 256,96 300,96 C344,96 378,118 378,174 C378,240 348,298 300,298 C252,298 222,240 222,174 Z" fill="url(#skin)"/>
+
+    <!-- Trimmed Beard / Jawline Shade -->
+    <path d="M224,205 C228,266 260,298 300,298 C340,298 372,266 376,205 C368,236 346,258 300,258 C254,258 232,236 224,205 Z" fill="#2d1e17" opacity="0.88"/>
+    <path d="M266,248 Q300,236 334,248 Q318,274 300,274 Q282,274 266,248 Z" fill="url(#skin)"/>
+
+    <!-- Wavy Hair -->
+    <path d="M214,186 C206,118 242,74 302,72 C362,70 392,114 384,186 C376,142 352,126 318,128 C286,130 250,118 224,158 Z" fill="#241812"/>
+
+    <!-- Brows, Eyes, Nose, Smile -->
+    <path d="M244,174 Q264,167 282,176" fill="none" stroke="#241812" stroke-width="5" stroke-linecap="round"/>
+    <path d="M318,176 Q336,167 356,174" fill="none" stroke="#241812" stroke-width="5" stroke-linecap="round"/>
+    <ellipse cx="264" cy="196" rx="8" ry="6.5" fill="#1e1510"/>
+    <ellipse cx="336" cy="196" rx="8" ry="6.5" fill="#1e1510"/>
+    <circle cx="266" cy="194" r="2.2" fill="#ffffff"/>
+    <circle cx="338" cy="194" r="2.2" fill="#ffffff"/>
+    <path d="M300,192 L294,224 L306,227" fill="none" stroke="#ad724a" stroke-width="3" stroke-linecap="round"/>
+    <path d="M276,248 Q300,265 324,248" fill="#ffffff" stroke="#8f4a3c" stroke-width="3" stroke-linecap="round"/>
+  </g>
+</svg>
