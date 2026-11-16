@@ -546,8 +546,10 @@
         /* ===== SECTION 2: CONTACT CARDS ===== */
         .contact-cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .contact-card {
@@ -926,6 +928,15 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        @media screen and (max-width: 1200px) {
+            .contact-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                max-width: 850px;
+                margin: 0 auto;
+            }
+        }
+
         @media screen and (max-width: 1024px) {
             .nav-links {
                 position: fixed;
@@ -1023,6 +1034,12 @@
             .contact-hero-image img { height: 360px; }
             .form-section-wrapper { grid-template-columns: 1fr; }
             .contact-form-box { padding: 30px; }
+            .contact-cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+                max-width: 850px;
+                margin: 0 auto;
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -1036,6 +1053,8 @@
             .cta-section h2 { font-size: 2.2rem; }
             .contact-hero-content h2 { font-size: 2rem; }
             .contact-hero-image img { height: 300px; }
+            .contact-cards-grid { gap: 20px; max-width: 100%; }
+            .contact-card { padding: 32px 20px; }
         }
 
         @media screen and (max-width: 500px) {
@@ -1056,6 +1075,9 @@
             .contact-hero-image img { height: 240px; border-radius: 22px; }
             .contact-hero-image::before { width: 90px; height: 90px; top: -12px; right: -12px; }
             [dir="rtl"] .contact-hero-image::before { right: auto; left: -12px; }
+            .contact-cards-grid { grid-template-columns: 1fr; gap: 16px; }
+            .contact-card { padding: 24px 16px; }
+            .contact-card-icon { width: 65px; height: 65px; font-size: 1.6rem; margin-bottom: 18px; }
         }
 
         .nav-overlay {
