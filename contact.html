@@ -313,6 +313,14 @@
             box-shadow: 0 8px 20px rgba(121,80,200,0.3);
         }
 
+        .nav-cta i {
+            font-size: 1rem;
+        }
+
+        .mobile-nav-cta {
+            display: none;
+        }
+
         .nav-controls {
             display: flex;
             align-items: center;
@@ -962,6 +970,45 @@
             .nav-main { gap: 15px; }
             .nav-cta { display: none; }
 
+            .mobile-nav-cta {
+                display: block;
+                margin-top: 15px;
+                padding-top: 15px;
+                border-top: 1px solid var(--border-color);
+                width: 100%;
+            }
+
+            .mobile-cta-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                background: var(--accent);
+                color: var(--white);
+                padding: 12px 20px;
+                border-radius: 40px;
+                font-weight: 700;
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                border: 2px solid var(--accent);
+                transition: var(--transition);
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 4px 14px rgba(121, 80, 200, 0.25);
+            }
+
+            .mobile-cta-btn:hover {
+                background: transparent;
+                color: var(--accent);
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(121, 80, 200, 0.35);
+            }
+
+            .mobile-cta-btn i {
+                font-size: 1rem;
+            }
+
             .page-header-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
             .page-header-content { text-align: center; }
             .page-header p { margin-left: auto; margin-right: auto; }
@@ -1059,6 +1106,11 @@
                         </li>
                         <li class="nav-item active">
                             <a href="contact.html" class="nav-link">Contact</a>
+                        </li>
+                        <li class="mobile-nav-cta">
+                            <a href="shop.html" class="mobile-cta-btn">
+                                <i class="fas fa-shopping-bag"></i> Shop Puzzles
+                            </a>
                         </li>
                     </ul>
 
@@ -1412,6 +1464,11 @@
         });
         document.querySelectorAll('.dropdown-link').forEach(link => {
             link.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) toggleMobileMenu();
+            });
+        });
+        document.querySelectorAll('.mobile-cta-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
                 if (window.innerWidth <= 1024) toggleMobileMenu();
             });
         });
