@@ -730,8 +730,10 @@
 
         .promo-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
         }
 
         .promo-card {
@@ -1138,7 +1140,8 @@
             .bulk-content h2 { font-size: 2rem; }
             .bulk-image img { height: 280px; }
             .cta-section h2 { font-size: 2.2rem; }
-            .promo-grid { grid-template-columns: 1fr 1fr; }
+            .promo-grid { gap: 20px; max-width: 100%; }
+            .promo-card { height: 280px; }
         }
 
         @media screen and (max-width: 500px) {
@@ -1477,6 +1480,15 @@
                         <h3>Handcrafted Wooden Puzzles</h3>
                         <p>Beautiful, durable puzzles made to last.</p>
                         <a href="#productsGrid" class="promo-link" data-filter-target="3d">Shop Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                <div class="promo-card">
+                    <img src="images/shop-promo-strategy.svg" alt="Tactical Strategy Games" loading="lazy">
+                    <div class="promo-overlay">
+                        <span class="promo-tag">Strategy</span>
+                        <h3>Master the Board</h3>
+                        <p>Chess, Go, and tactical games to test your foresight.</p>
+                        <a href="#productsGrid" class="promo-link" data-filter-target="strategy">Shop Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>

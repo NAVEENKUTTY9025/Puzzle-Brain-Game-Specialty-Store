@@ -603,9 +603,10 @@
         /* ===== SECTION 3: COMING SOON ===== */
         .coming-soon-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-top: 50px;
+            max-width: 900px;
+            margin: 50px auto 0;
         }
 
         .coming-card {
@@ -711,9 +712,10 @@
 
         .new-features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 30px;
-            margin-top: 50px;
+            max-width: 850px;
+            margin: 50px auto 0;
         }
 
         .new-feature-card {
@@ -1067,6 +1069,9 @@
             .new-hero-image img { height: 320px; }
             .newsletter-section h2 { font-size: 2.2rem; }
             .cta-section h2 { font-size: 2.2rem; }
+            .coming-soon-grid { gap: 20px; max-width: 100%; }
+            .new-features-grid { gap: 20px; max-width: 100%; }
+            .new-feature-card { padding: 32px 20px; }
         }
 
         @media screen and (max-width: 500px) {
@@ -1083,6 +1088,17 @@
             .new-hero-stats .stat-number { font-size: 1.8rem; }
             .new-hero-image img { height: 260px; }
             .newsletter-form input { min-width: 100%; }
+            .coming-soon-grid { gap: 14px; }
+            .coming-image { height: 160px; }
+            .coming-content { padding: 16px 12px; }
+            .coming-content h3 { font-size: 1rem; }
+            .coming-content p { font-size: 0.82rem; }
+            .coming-date { font-size: 0.78rem; margin-top: 8px; }
+            .new-features-grid { gap: 14px; }
+            .new-feature-card { padding: 24px 14px; }
+            .new-feature-card h3 { font-size: 1.25rem; }
+            .new-feature-icon { width: 60px; height: 60px; font-size: 1.5rem; margin-bottom: 15px; }
+            .new-feature-card p { font-size: 0.85rem; }
         }
 
         .nav-overlay {
@@ -1305,6 +1321,17 @@
                         <h3>Collector's Wooden Box Set</h3>
                         <p>A limited-edition wooden puzzle collection in a handcrafted box.</p>
                         <span class="coming-date"><i class="fas fa-calendar"></i> Arriving July 10</span>
+                    </div>
+                </div>
+                <div class="coming-card">
+                    <div class="coming-image studio-contain">
+                        <img src="images/h7.jpg" alt="Deluxe Master Chess Set" loading="lazy">
+                        <div class="coming-overlay"><i class="fas fa-clock"></i> Coming Soon</div>
+                    </div>
+                    <div class="coming-content">
+                        <h3>Deluxe Master Chess Set</h3>
+                        <p>Hand-carved pieces with an exquisite stone board. Timeless elegance.</p>
+                        <span class="coming-date"><i class="fas fa-calendar"></i> Arriving August 18</span>
                     </div>
                 </div>
             </div>
